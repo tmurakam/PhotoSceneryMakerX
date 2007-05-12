@@ -1,0 +1,702 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Photo Scenery Maker 1.2\n"
+"POT-Creation-Date: 2003-07-27 16:26+0900\n"
+"PO-Revision-Date: 2003-12-01 21:41+0900\n"
+"Last-Translator: Takuya Murakami <tmurakam@mtd.biglobe.ne.jp>\n"
+"Language-Team: Takuya Murakami <tmurakam@mtd.biglobe.ne.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. AboutDialog..Caption
+#: AboutDlg.dfm:6
+msgid "About"
+msgstr "バージョン情報"
+
+#. AboutDialog..Font.Name
+#. AboutDialog..Label1..Font.Name
+#. AboutDialog..Label2..Font.Name
+#. AboutDialog..Label3..Font.Name
+#. AboutDialog..LabelURL..Font.Name
+#. AboutDialog..Memo1..Font.Name
+#. LatLonDlg..Font.Name
+#. MainForm..Font.Name
+#. OptionDlg..Font.Name
+#. PrjForm..Font.Name
+#. SCGenForm..Font.Name
+#. SCGenForm..ButtonDoAll..Font.Name
+#: AboutDlg.dfm:13
+#: AboutDlg.dfm:68
+#: AboutDlg.dfm:200
+#: LLDlg.dfm:13
+#: MForm.dfm:11
+#: OptDlg.dfm:12
+#: PJForm.dfm:13
+#: SCGenFrm.dfm:13
+#: SCGenFrm.dfm:28
+msgid "Tahoma"
+msgstr ""
+
+#. AboutDialog..Label1..Caption
+#. MainForm..Caption
+#: AboutDlg.dfm:24
+msgid "Photo Scenery Maker"
+msgstr ""
+
+#. AboutDialog..Label2..Caption
+#: AboutDlg.dfm:37
+msgid "Version 1.2.4"
+msgstr ""
+
+#. AboutDialog..Label3..Caption
+#: AboutDlg.dfm:50
+msgid "Copyright (C) 2003, Takuya Murakami"
+msgstr ""
+
+#. AboutDialog..LabelURL..Caption
+#: AboutDlg.dfm:64
+msgid "http://scenerytools.sourceforge.net/"
+msgstr ""
+
+#. AboutDialog..Button1..Caption
+#. SCGenForm..ButtonClose..Caption
+#: AboutDlg.dfm:188
+msgid "Close"
+msgstr "閉じる"
+
+#. AboutDialog..Memo1......Lines.Strings
+#: AboutDlg.dfm:205
+msgid "This program is free software; you can redistribute it and/or modify"
+msgstr "本プログラムはフリー・ソフトウェアです。あなたは、Free Software"
+
+#. AboutDialog..Memo1......Lines.Strings
+#: AboutDlg.dfm:208
+msgid "it under the terms of the GNU General Public License as published by"
+msgstr "Foundation が公表したGNU 一般公有使用許諾の「バージョン２」或い"
+
+#. AboutDialog..Memo1......Lines.Strings
+#: AboutDlg.dfm:211
+msgid "the Free Software Foundation; either version 2 of the License, or"
+msgstr "はそれ以降の各バージョンの中からいずれかを選択し、そのバージョン"
+
+#. AboutDialog..Memo1....Lines.Strings
+#: AboutDlg.dfm:212
+msgid "(at your option) any later version."
+msgstr "が定める条項に従って本プログラムを再頒布または変更することができます。"
+
+#. AboutDialog..Memo1....Lines.Strings
+#: AboutDlg.dfm:214
+msgid "This program is distributed in the hope that it will be useful,"
+msgstr "本プログラムは有用とは思いますが、頒布にあたっては、市場性及び特"
+
+#. AboutDialog..Memo1....Lines.Strings
+#: AboutDlg.dfm:215
+msgid "but WITHOUT ANY WARRANTY; without even the implied warranty of"
+msgstr "定目的適合性についての暗黙の保証を含めて、いかなる保証も行ないま"
+
+#. AboutDialog..Memo1....Lines.Strings
+#: AboutDlg.dfm:216
+msgid "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
+msgstr "せん。詳細についてはGNU 一般公有使用許諾書をお読みください。"
+
+#. AboutDialog..Memo1....Lines.Strings
+#: AboutDlg.dfm:217
+msgid "GNU General Public License for more details."
+msgstr " "
+
+#. AboutDialog..Memo1......Lines.Strings
+#: AboutDlg.dfm:221
+msgid "You should have received a copy of the GNU General Public License"
+msgstr "あなたは、本プログラムと一緒にGNU 一般公有使用許諾の写しを受け取っ"
+
+#. AboutDialog..Memo1....Lines.Strings
+#: AboutDlg.dfm:222
+msgid "along with this program; if not, write to the Free Software"
+msgstr "ているはずです。そうでない場合は、Free Software Foundation, Inc.,"
+
+#. AboutDialog..Memo1......Lines.Strings
+#: AboutDlg.dfm:225
+msgid "Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr "59 Temple Place - Suite 330, Boston, MA 02111-1307, USA へ手紙を書いてください。"
+
+#. LatLonDlg..Caption
+#: LLDlg.dfm:6
+msgid "Lat/Lon"
+msgstr "緯度/経度"
+
+#. LatLonDlg..Label1..Caption
+#: LLDlg.dfm:24
+msgid "Latitude"
+msgstr "緯度"
+
+#. LatLonDlg..Label2..Caption
+#: LLDlg.dfm:31
+msgid "Longitude"
+msgstr "経度"
+
+#. LatLonDlg..Button1..Caption
+#. OptionDlg..ButtonOK..Caption
+#. PrjForm..Panel1..Button1..Caption
+#: LLDlg.dfm:52
+msgid "OK"
+msgstr ""
+
+#. LatLonDlg..Button2..Caption
+#. OptionDlg..Button2..Caption
+#. PrjForm..Panel1..Button2..Caption
+#: LLDlg.dfm:61
+msgid "Cancel"
+msgstr "キャンセル"
+
+#. MainForm..StatusBar......Text
+#. MainForm..StatusBar..SimpleText
+#. SCGenForm..StatusBar..SimpleText
+#: MForm.dfm:31
+msgid "Ready"
+msgstr "レディ"
+
+#. MainForm..MainMenu..F1..Caption
+#: MForm.dfm:68
+msgid "File(&F)"
+msgstr "ファイル(&F)"
+
+#. MainForm..MainMenu..F1..MenuNewPrj..Caption
+#: MForm.dfm:70
+msgid "New(&N)..."
+msgstr "新規作成(&N)..."
+
+#. MainForm..MainMenu..F1..MenuOpenPrj..Caption
+#: MForm.dfm:74
+msgid "Open(&O)..."
+msgstr "開く(&O)..."
+
+#. MainForm..MainMenu..F1..MenuPrjSave..Caption
+#: MForm.dfm:78
+msgid "Save(&S)"
+msgstr "上書き保存(&S)"
+
+#. MainForm..MainMenu..F1..MenuPrjSaveAs..Caption
+#: MForm.dfm:82
+msgid "Save As(&A)..."
+msgstr "名前をつけて保存(&A)..."
+
+#. MainForm..MainMenu..F1..N1..Caption
+#. MainForm..MainMenu..F1..N5..Caption
+#. MainForm..MainMenu..H1..N2..Caption
+#: MForm.dfm:86
+msgid "-"
+msgstr ""
+
+#. MainForm..MainMenu..F1..MenuPrjProperty..Caption
+#: MForm.dfm:89
+msgid "Project Property(&P)..."
+msgstr "プロジェクトのプロパティ(&P)..."
+
+#. MainForm..MainMenu..F1..MenuQuit..Caption
+#: MForm.dfm:96
+msgid "Quit(&Q)"
+msgstr "終了(&Q)"
+
+#. MainForm..MainMenu..MenuView..Caption
+#: MForm.dfm:101
+msgid "Vew(&V)"
+msgstr "表示(&V)"
+
+#. MainForm..MainMenu..MenuView..MenuViewSummer..Caption
+#. PrjForm..PageControl1..TabSheet1..Label1..Caption
+#: MForm.dfm:103
+msgid "Summer"
+msgstr "夏"
+
+#. MainForm..MainMenu..MenuView..MenuViewSpring..Caption
+#. PrjForm..PageControl1..TabSheet1..Label2..Caption
+#: MForm.dfm:108
+msgid "Spring"
+msgstr "春"
+
+#. MainForm..MainMenu..MenuView..MenuViewFall..Caption
+#. PrjForm..PageControl1..TabSheet1..Label3..Caption
+#: MForm.dfm:112
+msgid "Fall"
+msgstr "秋"
+
+#. MainForm..MainMenu..MenuView..MenuViewWinter..Caption
+#. PrjForm..PageControl1..TabSheet1..Label4..Caption
+#: MForm.dfm:116
+msgid "Winter"
+msgstr "冬"
+
+#. MainForm..MainMenu..MenuView..MenuViewHSWinter..Caption
+#: MForm.dfm:120
+msgid "Hard Winter"
+msgstr "厳冬"
+
+#. MainForm..MainMenu..MenuView..MenuViewLightmap..Caption
+#. PrjForm..PageControl1..TabSheet1..Label6..Caption
+#: MForm.dfm:124
+msgid "Lightmap"
+msgstr "ライトマップ"
+
+#. MainForm..MainMenu..MenuView..MenuViewAlpha..Caption
+#: MForm.dfm:128
+msgid "Water(Alpha)"
+msgstr "水面（アルファ）"
+
+#. MainForm..MainMenu..MenuCalibration..Caption
+#: MForm.dfm:133
+msgid "Calibration(&C)"
+msgstr "補正(&C)"
+
+#. MainForm..MainMenu..MenuCalibration..SetCPoint..Caption
+#: MForm.dfm:135
+msgid "2 Point Calibration(&P)..."
+msgstr "２点補正(&P)..."
+
+#. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..Caption
+#. PrjForm..PageControl1..TabSheet2..GroupBox1..Caption
+#: MForm.dfm:139
+msgid "Bitmap Boundary"
+msgstr "ビットマップ範囲"
+
+#. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..MenuTop..Caption
+#: MForm.dfm:141
+msgid "Top(&T)"
+msgstr "上(&T)"
+
+#. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..MenuBottom..Caption
+#: MForm.dfm:145
+msgid "Bottom(&B)"
+msgstr "下(&B)"
+
+#. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..MenuLeft..Caption
+#: MForm.dfm:149
+msgid "Left(&L)"
+msgstr "左(&L)"
+
+#. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..MenuRight..Caption
+#: MForm.dfm:153
+msgid "Right(&R)"
+msgstr "右(&R)"
+
+#. MainForm..MainMenu..MenuCalibration..ExecCorrection..Caption
+#: MForm.dfm:158
+msgid "Calculate optimal bitmap size (&O)"
+msgstr "最適ビットマップサイズ計算 (&P)"
+
+#. MainForm..MainMenu..MenuSCGen..Caption
+#: MForm.dfm:163
+msgid "Scenery Generation(&S)"
+msgstr "シーナリ生成(&S)"
+
+#. MainForm..MainMenu..MenuOption..Caption
+#: MForm.dfm:167
+msgid "Option (&O)"
+msgstr "オプション(&O)"
+
+#. MainForm..MainMenu..H1..Caption
+#: MForm.dfm:171
+msgid "Help(&H)"
+msgstr "ヘルプ(&H)"
+
+#. MainForm..MainMenu..H1..MenuTutorial..Caption
+#: MForm.dfm:173
+msgid "Tutorial(&T)..."
+msgstr "チュートリアル(&T)..."
+
+#. MainForm..MainMenu..H1..MenuManual..Caption
+#: MForm.dfm:177
+msgid "Manual(&M)..."
+msgstr "マニュアル(&M)..."
+
+#. MainForm..MainMenu..H1..MenuAbout..Caption
+#: MForm.dfm:184
+msgid "About(&A)..."
+msgstr "バージョン情報(&A)..."
+
+#. MainForm..OpenPrjDialog..DefaultExt
+#. MainForm..SavePrjDialog..DefaultExt
+#: MForm.dfm:190
+msgid "psm"
+msgstr ""
+
+#. MainForm..OpenPrjDialog..Filter
+#. MainForm..SavePrjDialog..Filter
+#: MForm.dfm:191
+msgid "Project files (*.psm)|*.psm|All files (*.*)|*.*"
+msgstr "プロジェクトファイル (*.psm)|*.psm|全てのファイル (*.*)|*.*"
+
+#. OptionDlg..Caption
+#: OptDlg.dfm:5
+msgid "Options"
+msgstr "オプション"
+
+#. OptionDlg..Label1..Caption
+#: OptDlg.dfm:24
+msgid "Terrain SDK folder"
+msgstr "Terrain SDK フォルダ"
+
+#. OptionDlg..Label2..Caption
+#: OptDlg.dfm:31
+msgid "Imagetool folder"
+msgstr "Imagetool フォルダ"
+
+#. OptionDlg..Label3..Caption
+#: OptDlg.dfm:38
+msgid "Language"
+msgstr "言語"
+
+#. OptionDlg..Label4....Height
+#: OptDlg.dfm:47
+msgid "Note: You MUST use FS2000 Terrain SDK. Custom Terrain SDK has some bugs, so it does not work properly!!!"
+msgstr "注意: FS2000 Terrain SDK を使用してください。Custom Terrain SDK にはバグがあるため正しく動作しません！！"
+
+#. OptionDlg..ButtonBrowseSDK..Caption
+#. OptionDlg..ButtonBrowserImagetool..Caption
+#. PrjForm..PageControl1..TabSheet1..ButtonRefBmpSummer..Caption
+#. PrjForm..PageControl1..TabSheet1..ButtonRefBmpSpring..Caption
+#. PrjForm..PageControl1..TabSheet1..ButtonRefBmpFall..Caption
+#. PrjForm..PageControl1..TabSheet1..ButtonRefBmpWinter..Caption
+#. PrjForm..PageControl1..TabSheet1..ButtonRefBmpHSWinter..Caption
+#. PrjForm..PageControl1..TabSheet1..ButtonRefBmpLightmap..Caption
+#. PrjForm..PageControl1..TabSheet1..ButtonRefBmpAlpha..Caption
+#. PrjForm..PageControl1..TabSheet3..GroupFileOutput..ButtonRefOutDir..Caption
+#: OptDlg.dfm:81
+#: PJForm.dfm:169
+#: PJForm.dfm:178
+#: PJForm.dfm:187
+#: PJForm.dfm:196
+#: PJForm.dfm:408
+msgid "..."
+msgstr ""
+
+#. OptionDlg..OpenDialog..DefaultExt
+#: OptDlg.dfm:111
+msgid "exe"
+msgstr ""
+
+#. PrjForm..Caption
+#: PJForm.dfm:6
+msgid "Project Property"
+msgstr "プロジェクトのプロパティ"
+
+#. PrjForm..PageControl1..TabSheet1..Caption
+#: PJForm.dfm:29
+msgid "Bitmaps"
+msgstr "ビットマップ"
+
+#. PrjForm..PageControl1..TabSheet1..Label5..Caption
+#: PJForm.dfm:63
+msgid "Harsh Winter"
+msgstr "厳冬"
+
+#. PrjForm..PageControl1..TabSheet1..Label7..Caption
+#: PJForm.dfm:77
+msgid "Water(alpha)"
+msgstr "水面（アルファ）"
+
+#. PrjForm..PageControl1..TabSheet1..CheckSeason..Caption
+#: PJForm.dfm:98
+msgid "Support Seasons"
+msgstr "季節のサポート"
+
+#. PrjForm..PageControl1..TabSheet2..Caption
+#: PJForm.dfm:202
+msgid "Coordinates"
+msgstr "座標"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBox1..Label10..Caption
+#: PJForm.dfm:216
+msgid "North"
+msgstr "北"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBox1..Label11..Caption
+#: PJForm.dfm:223
+msgid "South"
+msgstr "南"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBox1..Label12..Caption
+#: PJForm.dfm:230
+msgid "West"
+msgstr "西"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBox1..Label13..Caption
+#: PJForm.dfm:237
+msgid "East"
+msgstr "東"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBox2..Caption
+#: PJForm.dfm:277
+msgid "Resolution"
+msgstr "解像度"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBox2..Label14..Caption
+#: PJForm.dfm:284
+msgid "CellXDimensionDeg (second/pixel)"
+msgstr "X軸セル角 (秒/ピクセル)"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBox2..Label15..Caption
+#: PJForm.dfm:291
+msgid "CellYDimensionDeg (second/pixel)"
+msgstr "Y軸セル角 (秒/ピクセル)"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Caption
+#: PJForm.dfm:315
+msgid "Info"
+msgstr "情報"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Label16..Caption
+#: PJForm.dfm:322
+msgid "Bitmap Width"
+msgstr "ビットマップ幅"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Label17..Caption
+#: PJForm.dfm:329
+msgid "Bitmap Height"
+msgstr "ビットマップ高"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Label18..Caption
+#: PJForm.dfm:336
+msgid "X resolution (m/pixel)"
+msgstr "X軸解像度 (m/ピクセル)"
+
+#. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Label19..Caption
+#: PJForm.dfm:343
+msgid "Y resolution (m/pixel)"
+msgstr "Y軸解像度(m/ピクセル)"
+
+#. PrjForm..PageControl1..TabSheet3..Caption
+#: PJForm.dfm:380
+msgid "Output"
+msgstr "出力"
+
+#. PrjForm..PageControl1..TabSheet3..GroupFileOutput..Caption
+#: PJForm.dfm:387
+msgid "File output"
+msgstr "ファイル出力"
+
+#. PrjForm..PageControl1..TabSheet3..GroupFileOutput..Label9..Caption
+#: PJForm.dfm:394
+msgid "Base File Name"
+msgstr "ベースファイル名"
+
+#. PrjForm..PageControl1..TabSheet3..GroupFileOutput..Label8..Caption
+#: PJForm.dfm:401
+msgid "Output Folder"
+msgstr "出力フォルダ"
+
+#. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Caption
+#: PJForm.dfm:432
+msgid "Bitmap boundary"
+msgstr "ビットマップ範囲"
+
+#. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Label20..Caption
+#: PJForm.dfm:439
+msgid "Top"
+msgstr "上"
+
+#. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Label21..Caption
+#: PJForm.dfm:446
+msgid "Left"
+msgstr "左"
+
+#. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Label22..Caption
+#: PJForm.dfm:453
+msgid "Right"
+msgstr "右"
+
+#. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Label23..Caption
+#: PJForm.dfm:460
+msgid "Bottom"
+msgstr "下"
+
+#. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..CheckUseWhole..Caption
+#: PJForm.dfm:467
+msgid "Use whole bitmap"
+msgstr "ビットマップ全体を使用"
+
+#. PrjForm..OpenDialog..DefaultExt
+#: PJForm.dfm:528
+msgid "bmp"
+msgstr ""
+
+#. PrjForm..OpenDialog..Filter
+#: PJForm.dfm:529
+msgid "Bitmap File (*.bmp)|*.bmp|All Files (*.*)|*.*"
+msgstr "ビットマップファイル (*.bmp)|*.bmp|全てのファイル (*.*)|*.*"
+
+#. SCGenForm..Caption
+#: SCGenFrm.dfm:6
+msgid "Scenery Generation"
+msgstr "シーナリ生成"
+
+#. SCGenForm..ButtonDoAll..Caption
+#: SCGenFrm.dfm:24
+msgid "Run whole process"
+msgstr "全実行"
+
+#. SCGenForm..GroupBox1..Caption
+#: SCGenFrm.dfm:48
+msgid "Step execution"
+msgstr "ステップ実行"
+
+#. SCGenForm..GroupBox1..ButtonMakeInf..Caption
+#: SCGenFrm.dfm:55
+msgid "1. Generate inf file"
+msgstr "1. inf ファイル生成"
+
+#. SCGenForm..GroupBox1..ButtonResample..Caption
+#: SCGenFrm.dfm:64
+msgid "2. Resample"
+msgstr "2. Resample実行"
+
+#. SCGenForm..GroupBox1..ButtonConvertTexture..Caption
+#: SCGenFrm.dfm:73
+msgid "4. Convert Texture"
+msgstr "4. テクスチャ変換"
+
+#. SCGenForm..GroupBox1..ButtonGenBGL..Caption
+#: SCGenFrm.dfm:82
+msgid "5. Generate BGL"
+msgstr "5. BGLファイル生成"
+
+#. SCGenForm..GroupBox1..ButtonMergeAlpha..Caption
+#: SCGenFrm.dfm:91
+msgid "3. Merge Alpha Texture"
+msgstr "3. アルファテクスチャのマージ"
+
+#. SCGenForm..ButtonStop..Caption
+#: SCGenFrm.dfm:101
+msgid "Stop"
+msgstr "中断"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\Bitmap.cpp:83
+msgid "Bitmap must be 16/24/32bit uncompressed windows BMP file."
+msgstr "ビットマップは 16/24/32bit 無圧縮の Windows BMP ファイルでなければなりません"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\Bitmap.cpp:98
+msgid "Could not allocate memory for bitmap. Maybe bitmap file size is too large."
+msgstr "ビットマップ用メモリの割り当てに失敗しました。ビットマップファイルが大きすぎる可能性があります。"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:382
+msgid "Can't load project file."
+msgstr "プロジェクトファイルを開けません"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:151
+msgid "Confirmation"
+msgstr "確認"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:152
+msgid "Project is modified. Do you want to save?"
+msgstr "プロジェクトが変更されています。保存しますか？"
+
+# D:\USR\FS\PhotoSceneryMaker\MForm.cpp:149
+msgid "Specify #1 correction point"
+msgstr "1番目のコントロールポイントを指定してください"
+
+# D:\USR\FS\PhotoSceneryMaker\MForm.cpp:149
+msgid "Specify #2 correction point"
+msgstr "2番目のコントロールポイントを指定してください"
+
+msgid "Specify bitmap top boundary"
+msgstr "ビットマップの上端を指定してください"
+
+msgid "Specify bitmap bottom boundary"
+msgstr "ビットマップの下端を指定してください"
+
+msgid "Specify bitmap left boundary"
+msgstr "ビットマップの左端を指定してください"
+
+msgid "Specify bitmap right boundary"
+msgstr "ビットマップの右端を指定してください"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:403
+msgid "Latitude/Longitude value out of range."
+msgstr "緯度/経度の値が範囲外です"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:419
+msgid "Calibration parameters are invalid. Please retry."
+msgstr "補正パラメータが不正です。やり直してください。"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:282
+#, c-format
+msgid "Optimal bitmap size is %d x %d.\n"
+msgstr "最適なビットマップサイズは %d x %d です。\n"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:284
+msgid "You can resize the bitmap with some image editing tools."
+msgstr "適切な画像編集ツールでリサイズすることができます。"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:382
+msgid "Can't open bitmap file"
+msgstr "ビットマップファイルを開けません"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\OptDlg.cpp:226
+msgid "Resample.exe version is invalid. Please use FS2000 Terrain SDK!"
+msgstr "Resample.exe のバージョンが違います。FS2000 Terrain SDK のものを使ってください！"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:419
+msgid "Some coordinate parameters are invalid. Please re-calibrate."
+msgstr "座標パラメータが不正です。補正をやり直してください。"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\SCGenFrm.cpp:80
+msgid "Texture resolution is too HIGH. Please check texture resolution and try again."
+msgstr "テクスチャの解像度が高すぎます。解像度を確認して再試行してください。"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\SCGenFrm.cpp:86
+msgid "Texture resolution is too LOW. Please check texture resolution and try again."
+msgstr "テクスチャの解像度が低すぎます。解像度を確認して再試行してください。"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\SCGenFrm.cpp:106
+#, c-format
+msgid ""
+"Total texture size becomes very big (about %d MBytes).\n"
+"Proceed?"
+msgstr ""
+"テクスチャサイズが非常に大きくなります（約 %d MBytes)\n"
+"続行しますか？"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\SCGenFrm.cpp:86
+msgid "Done"
+msgstr "完了"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\SCGenThread.cpp:84
+msgid "Interrupted"
+msgstr "中断されました"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\SCGenThread.cpp:97
+msgid "Creating inf files..."
+msgstr "inf ファイル生成中..."
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\MForm.cpp:382
+#, c-format
+msgid "Can't open inf file : %s"
+msgstr "inf ファイルを開けません : %s"
+
+# D:\USR\FS.SceneryTools\PhotoSceneryMaker\SCGenThread.cpp:219
+#, c-format
+msgid "Resampling : %s..."
+msgstr "Resample 実行中 : %s..."
+
+# D:\USR\FS\PhotoSceneryMaker\SCGenFrm.cpp:121
+msgid "Error"
+msgstr "エラー"
+
+# D:\USR\FS\PhotoSceneryMaker\SCGenFrm.cpp:122
+msgid "Some errors occured."
+msgstr "エラーが発生しました"
+
+msgid "Merging Alpha Textures..."
+msgstr "アルファテクスチャのマージ中..."
+
+msgid "Converting Textures..."
+msgstr "テクスチャ変換中..."
+
+msgid "Generating BGL files..."
+msgstr "BGL ファイル生成中..."
+
