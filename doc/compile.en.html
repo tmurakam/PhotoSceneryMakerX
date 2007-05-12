@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<title>Tutorial</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>Generate scenery</h1>
+
+Select "Scenery Generation" menu.
+<p>
+
+<img src="ScGenForm.png" width="453" height="288">
+<p>
+
+Scenery generation process consists of following steps:
+
+<ol>
+<li>Create inf file for resample.exe.
+<li>Execute resample.exe of Terrain SDK. Bitmap files and tmf files are created in this process.
+<li>Merge alpha texture. In this process, textures and alpha textures are merged into 
+targa (.tga) format bitmaps.
+<li>Convert texture. In this process, targa format bitmaps are converted into 
+BMP files used in Flight Simulator.
+<li>Generate BGL file. Tmf files are compressed and BGL file is generated from the tmf file.
+</ol>
+
+Usually use "Run Whole Process".
+<p>
+
+That's all!!! All scenery files are generated.
+</body>
+</html>

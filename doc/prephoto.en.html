@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<title>Tutorial</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>Prepare terrain photo bitmaps</h1>
+
+Prepare terrain photo bitmaps. This process is most hard one.
+
+<h2>Get the photo</h2>
+
+First, get aerial or satellite photo bitmaps from any vendors then
+scan the photo by scanners.
+<p>
+
+At least 4.8m/pixel resolution is needed.
+<p>
+
+<h2>Correct photo</h2>
+
+If the whole photo scenery area is very huge, You must correct the photo.
+<p>
+
+To do this, get accurate topographical maps, overlaps the photo texture
+over the maps with layer function of any graphic processing software like
+Adobe Photo Shop, Paint Shop Pro etc.
+<p>
+
+Note: You must use "Unprojected Maps" as topographical maps:<p>
+
+<center>
+<img src="unproj.gif" width="540" height="341"><br>
+"<a href="http://www.colorado.edu/geography/gcraft/notes/mapproj/mapproj.html">Map Projection Overview</a>", Peter H. Dana.
+</center>
+<p>
+
+Unprojected maps include those that are formed by considering longitude and latitude
+as a simple rectangular coordinate system.
+Scale, distance, area, and shape are all distorted with the distortion
+increasing toward the poles. 
+<p>
+
+
+<h2>Alpha (water-mask) bitmap</h2>
+
+You need alpha bitmap to 'hollow out' the water area.
+<p>
+See sample bitmaps in Custom Terrain Textures SDK.
+<p>
+
+<h2>Bitmap format</h2>
+
+Bitmaps format must be 24bit full-color BMP file.
+
+<p>
+If you want to use seasonal/lightmap photo scenery,
+you need all 6 bitmaps of spring/summer/fall/winter/harsh winter/lightmap.
+<p>
+
+Optimal resolution of the bitmap is 4.8m/pixel (North-South),
+and 6.4 * cos(latitude) m/pixel (East-West).
+
+</body>
+</html>

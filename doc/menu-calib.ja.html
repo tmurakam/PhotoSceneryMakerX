@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<title>Manual</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h2>補正メニュー</h2>
+
+<h3>２点補正</h3>
+
+目標となる２つの点の緯度・経度を入力して補正を行うことができます。
+(<a href="calibration.ja.html">→チュートリアル</a>)
+
+<h3>ビットマップ範囲</h3>
+
+使用するビットマップの範囲を限定することができます。
+ビットマップ範囲は、画面上では黄線で表示されます。
+(参照: <a href="menu-file.ja.html">プロジェクトのプロパティ : ビットマップ範囲</a>)
+
+<h3>最適ビットマップサイズ</h3>
+
+最適なビットマップサイズを計算します。
+<p>
+Flight Simulator で使用するビットマップは、約 4.8m/pixel のサイズに固定されています。
+<p>
+Terrain SDK は、シーナリビットマップを生成するときに自動的にこの解像度になるよう
+ビットマップを伸縮しますが、これはあまり精度がよくありません（単純な線形補間）。
+ここで計算された値を使って、画像処理ソフトで伸縮したほうが良い結果が得られます。
+
+</body>
+</html>
