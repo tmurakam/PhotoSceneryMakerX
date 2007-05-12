@@ -46,9 +46,7 @@ protected:
 
 	void MakeInf(void);
 	AnsiString InfFileName(void);
-	AnsiString BmpPath(void);
-	void MakeInfMain(void);
-        void MakeInfSub(FILE *fp, int n, const char *layer, AnsiString bmpfile, Transform *trans); 
+        void MakeInfSub(FILE *fp, int n, const char *layer, AnsiString bmpfile, Transform *trans);
 
 	int ExecCmd(AnsiString cmdline, AnsiString desc);
 

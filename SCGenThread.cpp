@@ -76,18 +76,6 @@ void __fastcall SCGenThread::ShowMsg(void)
 //---------------------------------------------------------------------------
 // Create INF file for resample.exe
 //
-void SCGenThread::MakeInf(void)
-{
-	AnsiString msg = _("Creating inf files...");
-	SetStatusMsg(msg);
-
-	// Create Output directories
-	MkDir(Proj->OutDir);
-	MkDir(Proj->OutDir + "\\TmpBmp");
-	MkDir(Proj->OutDir + "\\TmpAlpha");
-
-        MakeInfMain();
-}
 
 // Get INF file name
 AnsiString SCGenThread::InfFileName(void)
@@ -98,18 +86,16 @@ AnsiString SCGenThread::InfFileName(void)
 	return path;
 }
 
-// Get BMP path
-AnsiString SCGenThread::BmpPath(void)
-{
-	AnsiString path;
-	path.sprintf("%s\\TmpBmp", Proj->OutDir);
-	return path;
-}
-
 // Create one inf file
-void SCGenThread::MakeInfMain(void)
+void SCGenThread::MakeInf(void)
 {
-	AnsiString inf = InfFileName();
+	AnsiString msg = _("Creating inf files...");
+	SetStatusMsg(msg);
+
+	// Create Output directories
+	MkDir(Proj->OutDir);
+
+        AnsiString inf = InfFileName();
 
 	AnsiString BmpFile = Proj->BmpFile();
 	if (BmpFile.IsEmpty()) {
@@ -179,7 +165,7 @@ void SCGenThread::MakeInfMain(void)
 
 	// Build Destination section
 	fprintf(fp, "\n[Destination]\n");
-	fprintf(fp, "\tDestDir = \"%s\"\n", BmpPath().c_str());
+	fprintf(fp, "\tDestDir = \"%s\"\n", Proj->OutDir.c_str());
 	fprintf(fp, "\tDestBaseFileName = \"%s\"\n", Proj->BaseFile.c_str());
 
 	if (trans->Boundary.useWhole) {
@@ -277,8 +263,7 @@ void SCGenThread::Resample(void)
 	SetStatusMsg("Resampling...");
 
 	// Change directory to working directory
-	AnsiString bmppath = BmpPath();
-	ChDir(bmppath);
+	ChDir(Proj->OutDir);
 
 	// Execute resample
 	AnsiString inf = InfFileName();
