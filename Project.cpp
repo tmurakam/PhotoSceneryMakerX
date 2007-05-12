@@ -45,7 +45,11 @@ void PSMProject::LoadFromFile(AnsiString prjfile)
 
 	for (int i = 0; i < BM_MAX; i++) {
 		BmpFiles[i] = ini->ReadString("Source", BmpKey[i], "");
+	}
 
+        // For backward compatibility
+        if (BmpFiles[BM_DAY].IsEmpty()) {
+        	BmpFiles[BM_DAY] = ini->ReadString("Source", "BMSummer", "");
 	}
 
 	trans.Width  = ini->ReadInteger("Source", "Width",  -1);

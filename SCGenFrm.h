@@ -42,18 +42,12 @@ __published:	// IDE managed components
 	TButton *ButtonClose;
 	TGroupBox *GroupBox1;
 	TButton *ButtonMakeInf;
-	TButton *ButtonResample;
-	TButton *ButtonConvertTexture;
 	TButton *ButtonGenBGL;
-	TButton *ButtonMergeAlpha;
 	TButton *ButtonStop;
 	TStatusBar *StatusBar;
 	void __fastcall ButtonMakeInfClick(TObject *Sender);
-	void __fastcall ButtonResampleClick(TObject *Sender);
 	void __fastcall ButtonGenBGLClick(TObject *Sender);
-	void __fastcall ButtonConvertTextureClick(TObject *Sender);
 	void __fastcall ButtonDoAllClick(TObject *Sender);
-	void __fastcall ButtonMergeAlphaClick(TObject *Sender);
 	void __fastcall ButtonStopClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 private:	// User decl.

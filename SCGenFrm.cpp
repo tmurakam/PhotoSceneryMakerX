@@ -146,28 +146,6 @@ void __fastcall TSCGenForm::ButtonMakeInfClick(TObject *Sender)
 	if (SanityCheck() == false) return;
 	StartThread(EX_MAKEINF);
 }
-
-//---------------------------------------------------------------------------
-// Execute resample
-void __fastcall TSCGenForm::ButtonResampleClick(TObject *Sender)
-{
-	if (SanityCheck() == false) return;
-	StartThread(EX_RESAMPLE);
-}
-
-//---------------------------------------------------------------------------
-// Merge alpha textures
-void __fastcall TSCGenForm::ButtonMergeAlphaClick(TObject *Sender)
-{
-	StartThread(EX_MRGALPHA);
-}
-
-//---------------------------------------------------------------------------
-// Convert Texture
-void __fastcall TSCGenForm::ButtonConvertTextureClick(TObject *Sender)
-{
-	StartThread(EX_CONVTEX);
-}
 //---------------------------------------------------------------------------
 // Generate BGL
 void __fastcall TSCGenForm::ButtonGenBGLClick(TObject *Sender)
@@ -179,7 +157,7 @@ void __fastcall TSCGenForm::ButtonGenBGLClick(TObject *Sender)
 void __fastcall TSCGenForm::ButtonDoAllClick(TObject *Sender)
 {
 	if (SanityCheck() == false) return;
-	StartThread(EX_MAKEINF | EX_RESAMPLE | EX_MRGALPHA | EX_CONVTEX | EX_GENBGL);
+	StartThread(EX_MAKEINF | EX_GENBGL);
 }
 
 //---------------------------------------------------------------------------
@@ -187,10 +165,6 @@ void __fastcall TSCGenForm::ButtonDoAllClick(TObject *Sender)
 void TSCGenForm::ProcessState(bool start)
 {
 	ButtonDoAll->Enabled = !start;
-	ButtonMakeInf->Enabled = !start;
-	ButtonResample->Enabled = !start;
-	ButtonMergeAlpha->Enabled = !start;
-	ButtonConvertTexture->Enabled = !start;
 	ButtonGenBGL->Enabled = !start;
 	ButtonClose->Enabled = !start;
 

@@ -26,14 +26,13 @@
 #define SCGenThreadH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
+#include <stdio.h>
 
 #include "Project.h"
 
+
 #define	EX_MAKEINF	0x1
-#define	EX_RESAMPLE	0x2
-#define	EX_MRGALPHA	0x4
-#define	EX_CONVTEX	0x8
-#define	EX_GENBGL	0x10
+#define	EX_GENBGL	0x2
 
 //---------------------------------------------------------------------------
 class SCGenThread : public TThread
@@ -49,13 +48,11 @@ protected:
 	AnsiString InfFileName(void);
 	AnsiString BmpPath(void);
 	void MakeInfMain(void);
+        void MakeInfSub(FILE *fp, int n, const char *layer, AnsiString bmpfile, Transform *trans); 
 
 	int ExecCmd(AnsiString cmdline, AnsiString desc);
 
 	void Resample(void);
-	void MergeAlpha(void);
-	void ConvTex(void);
-	void GenBgl(void);
 
 	void SetStatusMsg(AnsiString msg);
 

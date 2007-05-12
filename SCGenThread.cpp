@@ -51,10 +51,7 @@ void __fastcall SCGenThread::Execute()
 {
 	try {
 		if (Sw & EX_MAKEINF) MakeInf();
-		if (!Terminated && Sw & EX_RESAMPLE) Resample();
-		if (!Terminated && Sw & EX_MRGALPHA) MergeAlpha();
-		if (!Terminated && Sw & EX_CONVTEX) ConvTex();
-		if (!Terminated && Sw & EX_GENBGL) GenBgl();
+		if (!Terminated && Sw & EX_GENBGL) Resample();
 
 		if (Terminated) {
 			ResultMsg = _("Interrupted");
@@ -119,6 +116,18 @@ void SCGenThread::MakeInfMain(void)
 		return;
 	}
 
+        int nSource = 1;
+        int nNight = -1;
+        int nAlpha = -1;
+        if (Proj->HasNight) {
+            nSource++;
+            nNight = nSource;
+	}
+        if (Proj->HasAlpha) {
+            nSource++;
+            nAlpha = nSource;
+        }
+
 	// Open inf file
 	FILE *fp;
 	fp = fopen(inf.c_str(), "w");
@@ -132,28 +141,47 @@ void SCGenThread::MakeInfMain(void)
 	Transform *trans = Proj->Trans;
 
 	// Build Source section
-	fprintf(fp, "[Source]\n");
-	fprintf(fp, "\tType = CUSTOM\n");
-	fprintf(fp, "\tSourceDir = \"%s\"\n", ExtractFileDir(BmpFile).c_str());
-	fprintf(fp, "\tSourceFile = \"%s\"\n", ExtractFileName(BmpFile).c_str());
-	fprintf(fp, "\tLat = %.24f\n", trans->Base.lat.deg);
-	fprintf(fp, "\tLon = %.24f\n", trans->Base.lon.deg);
-	fprintf(fp, "\tNumOfCellsPerLine = %d\n", trans->Width);
-	fprintf(fp, "\tNumOfLines = %d\n", trans->Height);
-	fprintf(fp, "\tCellXdimensionDeg = %.24f\n", trans->Resolution.x);
-	fprintf(fp, "\tCellYdimensionDeg = %.24f\n", trans->Resolution.y);
+        if (nSource >= 2) {
+		fprintf(fp, "[Source]\n");
+	        fprintf(fp, "Type = MultiSource\n");
+	        fprintf(fp, "NumberOfSources = %d\n", nSource);
+	        fprintf(fp, "\n");
+
+		MakeInfSub(fp, 1, "Imagery", Proj->BmpFile(BM_DAY), trans);
+
+	        if (Proj->HasAlpha) {
+	        	fprintf(fp, "Channel_LandWaterMask = %d.0\n", nAlpha);
+	        }
+	} else {
+		MakeInfSub(fp, 0, "Imagery", Proj->BmpFile(BM_DAY), trans);
+        }
+	fprintf(fp, "Variation = Day\n");
+        fprintf(fp, "\n");
+
+        // set night bitmap section
+        if (nNight > 0) {
+	        MakeInfSub(fp, nNight, "Imagery", Proj->BmpFile(BM_NIGHT), trans);
+	        if (Proj->HasAlpha) {
+	        	fprintf(fp, "Channel_LandWaterMask = %d.0\n", nAlpha);
+	        }
+	        fprintf(fp, "\n");
+        }
+
+        // alpha channel (land water mask)
+        if (nAlpha > 0) {
+	        MakeInfSub(fp, nAlpha, "None", Proj->BmpFile(BM_ALPHA), trans);
+		fprintf(fp, "Variation = Night\n");
+	        if (Proj->HasAlpha) {
+	        	fprintf(fp, "Channel_LandWaterMask = %d.0\n", nAlpha);
+	        }
+	        fprintf(fp, "\n");
+        }
 
 	// Build Destination section
 	fprintf(fp, "\n[Destination]\n");
 	fprintf(fp, "\tDestDir = \"%s\"\n", BmpPath().c_str());
 	fprintf(fp, "\tDestBaseFileName = \"%s\"\n", Proj->BaseFile.c_str());
-#if 0
-	if (Proj->HasSeason) {
-		fprintf(fp, "\twithseasons = 1\n");
-		fprintf(fp, "\tseason = %s\n", SeasonName[season]);
-	}
-#endif
-	
+
 	if (trans->Boundary.useWhole) {
 		fprintf(fp, "\tUseSourceDimensions = 1\n");
 	} else {
@@ -161,7 +189,7 @@ void SCGenThread::MakeInfMain(void)
 
 		LatLon nw = trans->CalcLatLon(trans->Boundary.left, trans->Boundary.top);
 		LatLon se = trans->CalcLatLon(trans->Boundary.right, trans->Boundary.bottom);
-		
+
 		fprintf(fp, "\tNorthLat = %.24f\n", nw.lat.deg);
 		fprintf(fp, "\tWestLong = %.24f\n", nw.lon.deg);
 		fprintf(fp, "\tSouthLat = %.24f\n", se.lat.deg);
@@ -169,6 +197,24 @@ void SCGenThread::MakeInfMain(void)
 	}
 	fclose(fp);
 }
+
+void SCGenThread::MakeInfSub(FILE *fp, int n, const char *layer, AnsiString bmpfile, Transform *trans)
+{
+	if (n > 0) {
+		fprintf(fp, "[Source%d]\n", n);
+        } else {
+	        fprintf(fp, "[Source]\n");
+        }
+	fprintf(fp, "Type = BMP\n");
+	fprintf(fp, "Layer = %s\n", layer);
+	fprintf(fp, "SourceDir = \"%s\"\n", ExtractFileDir(bmpfile).c_str());
+	fprintf(fp, "SourceFile = \"%s\"\n", ExtractFileName(bmpfile).c_str());
+	fprintf(fp, "ULXMAP = %.24f\n", trans->Base.lon.deg);
+	fprintf(fp, "ULYMAP = %.24f\n", trans->Base.lat.deg);
+	fprintf(fp, "XDIM = %.24f\n", trans->Resolution.x);
+	fprintf(fp, "YDIM = %.24f\n", trans->Resolution.y);
+}
+
 //---------------------------------------------------------------------------
 // Execute generic commands
 //
@@ -245,142 +291,6 @@ void SCGenThread::Resample(void)
 		AnsiString mes = _("Some errors occured.");
 		Application->MessageBox(mes.c_str(), title.c_str(), MB_OK);
 	}
-
-#if 0
-	// Move tmf file : Only one tmf file is needed.
-	AnsiString tmf;
-	tmf.sprintf("%s\\%s.tmf", BmpPath(BM_SUMMER), Proj->BaseFile);
-	AnsiString newtmf;
-	newtmf.sprintf("%s\\%s.tmf", Proj->OutDir, Proj->BaseFile);
-
-	DeleteFile(newtmf.c_str());
-	MoveFile(tmf.c_str(), newtmf.c_str());
-
-	// Delete unused files.
-	tmf.sprintf("%s\\%s.tmf", BmpPath(BM_ALPHA), Proj->BaseFile);
-	DeleteFile(tmf.c_str());
-#endif
-}
-
-//---------------------------------------------------------------------------
-// Merging Alpha textures
-//
-void SCGenThread::MergeAlpha(void)
-{
-#if 0
-	AnsiString msg = _("Merging Alpha Textures...");
-	SetStatusMsg(msg);
-
-	// Create texture directory
-	AnsiString texdir;
-	texdir.sprintf("%s\\texture", Proj->OutDir);
-	MkDir(texdir);
-
-	// Build Targa file
-	AnsiString bmpdir = BmpPath(BM_SUMMER);
-	AnsiString alphadir = BmpPath(BM_ALPHA);
-
-	AnsiString searchfile;
-	searchfile.sprintf("%s\\*su.bmp", bmpdir);
-
-	AnsiString alphafile, bmpfiles[BM_MAX], tgafiles[BM_MAX], pre;
-
-	alphafile = "";
-	
-	TSearchRec rec;
-	int ret = FindFirst(searchfile, faAnyFile & ~faDirectory, rec);
-	int count = 1;
-	while (ret == 0) {
-		if (Terminated) return;
-
-		// Show current status
-		AnsiString st;
-		st.sprintf("Merging textures : %d", count++);
-		SetStatusMsg(st);
-
-		// Get file name without extension.
-		int len = rec.Name.Length();
-		pre = rec.Name.SubString(1, len - 6);
-
-		// Get alpha texture filename
-		if (Proj->HasAlpha) {
-			alphafile.sprintf("%s\\%ssu.bmp", alphadir, pre);
-		}
-
-		// Get bmp filenames
-		for (int i = 0; i < BM_MAX; i++) {
-			if (i == BM_ALPHA) continue;
-			bmpfiles[i].sprintf("%s\\%s%s.bmp", bmpdir, pre, SeasonSuffix[i]);
-			tgafiles[i].sprintf("%s\\%s%s.tga", texdir, pre, SeasonSuffix[i]);
-		}
-
-		// Execute
-		MergeAlphaTextures(bmpfiles, alphafile, tgafiles, Proj->HasSeason);
-
-		ret = FindNext(rec);
-	}
-	FindClose(rec);
-#endif
-}
-
-//---------------------------------------------------------------------------
-// Convert textures
-//
-void SCGenThread::ConvTex(void)
-{
-#if 0
-	AnsiString msg = _("Converting Textures...");
-	SetStatusMsg(msg);
-
-	AnsiString Imagetool;
-	Imagetool.sprintf("%s\\imagetool.exe", OptionDlg->GetSDKPath());
-
-	AnsiString cmdline;
-	cmdline.sprintf("\"%s\" -DXT1 -e bmp -terrainphoto \"%s\\texture\\*.tga\"",
-		Imagetool, Proj->OutDir);
-
-	ExecCmd(cmdline, "imagetool.exe");
-#endif
-}
-//---------------------------------------------------------------------------
-// Generate BGL file
-//
-void SCGenThread::GenBgl(void)
-{
-#if 0
-	AnsiString msg = _("Generating BGL files...");
-	SetStatusMsg(msg);
-
-	AnsiString outdir = Proj->OutDir;
-	AnsiString basefile = Proj->BaseFile;
-
-	// Create scenery directory
-	AnsiString scdir;
-	scdir.sprintf("%s\\scenery", outdir);
-	MkDir(scdir);
-
-	// Get BGL filename
-	AnsiString bgl;
-	bgl.sprintf("%s\\scenery\\%s.bgl", outdir, basefile);
-
-	// Get working filename
-	AnsiString tmf, tmfc;
-	tmf.sprintf("%s\\%s.tmf", outdir, basefile);
-	tmfc.sprintf("%s\\%s-cmp.tmf", outdir, basefile);
-
-	AnsiString sdkpath;
-	sdkpath = OptionDlg->GetSDKPath();
-
-	// Compress tmf file
-	AnsiString cmdline;
-	cmdline.sprintf("\"%s\\tmfcompress.exe\" \"%s\" \"%s\"", sdkpath, tmf, tmfc);
-	ExecCmd(cmdline, "tmfcompress.exe");
-	if (Terminated) return;
-
-	// Convert BGL file
-	cmdline.sprintf("\"%s\\tmf2bgl.exe\" \"%s\" \"%s\"", sdkpath, tmfc, bgl);
-	ExecCmd(cmdline, "tmf2bgl.exe");
-#endif        
 }
 
 //---------------------------------------------------------------------------

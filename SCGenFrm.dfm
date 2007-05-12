@@ -56,41 +56,14 @@ object SCGenForm: TSCGenForm
       TabOrder = 0
       OnClick = ButtonMakeInfClick
     end
-    object ButtonResample: TButton
-      Left = 16
-      Top = 56
-      Width = 161
-      Height = 25
-      Caption = '2. Resample'
-      TabOrder = 1
-      OnClick = ButtonResampleClick
-    end
-    object ButtonConvertTexture: TButton
-      Left = 16
-      Top = 120
-      Width = 161
-      Height = 25
-      Caption = '4. Convert Texture'
-      TabOrder = 3
-      OnClick = ButtonConvertTextureClick
-    end
     object ButtonGenBGL: TButton
       Left = 16
-      Top = 152
+      Top = 72
       Width = 161
       Height = 25
-      Caption = '5. Generate BGL'
-      TabOrder = 4
+      Caption = '2. Generate BGL'
+      TabOrder = 1
       OnClick = ButtonGenBGLClick
-    end
-    object ButtonMergeAlpha: TButton
-      Left = 16
-      Top = 88
-      Width = 161
-      Height = 25
-      Caption = '3. Merge Alpha Texture'
-      TabOrder = 2
-      OnClick = ButtonMergeAlphaClick
     end
   end
   object ButtonStop: TButton

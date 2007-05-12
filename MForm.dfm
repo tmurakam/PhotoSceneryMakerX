@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 253
   Top = 122
-  Caption = 'Photo Scenery Maker'
+  Caption = 'Photo Scenery Maker for FSX'
   ClientHeight = 482
   ClientWidth = 628
   Color = clBtnFace
@@ -173,7 +173,7 @@ object MainForm: TMainForm
   end
   object OpenPrjDialog: TOpenDialog
     DefaultExt = 'psm'
-    Filter = 'Project files (*.psm)|*.psm|All files (*.*)|*.*'
+    Filter = 'PSMX Project files (*.psmx)|*.psmx|All files (*.*)|*.*'
     Left = 408
     Top = 16
   end
