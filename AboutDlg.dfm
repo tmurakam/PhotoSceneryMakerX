@@ -19,9 +19,9 @@ object AboutDialog: TAboutDialog
   object Label1: TLabel
     Left = 120
     Top = 24
-    Width = 177
+    Width = 244
     Height = 23
-    Caption = 'Photo Scenery Maker'
+    Caption = 'Photo Scenery Maker for FSX'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -32,9 +32,9 @@ object AboutDialog: TAboutDialog
   object Label2: TLabel
     Left = 168
     Top = 56
-    Width = 95
+    Width = 81
     Height = 19
-    Caption = 'Version 1.2.4'
+    Caption = 'Version 0.1'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -43,11 +43,11 @@ object AboutDialog: TAboutDialog
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 88
-    Top = 96
-    Width = 217
+    Left = 80
+    Top = 98
+    Width = 250
     Height = 16
-    Caption = 'Copyright (C) 2003, Takuya Murakami'
+    Caption = 'Copyright (C) 2003-2007, Takuya Murakami'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -13

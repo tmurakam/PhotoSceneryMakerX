@@ -46,26 +46,13 @@ __published:	// IDE managed components
 	TPanel *Panel1;
 	TButton *Button1;
 	TButton *Button2;
-	TEdit *EditBmpSummer;
-	TEdit *EditBmpSpring;
-	TCheckBox *CheckSeason;
+	TEdit *EditBmpDay;
 	TLabel *Label1;
-	TLabel *Label2;
-	TLabel *Label3;
-	TLabel *Label4;
-	TLabel *Label5;
 	TLabel *Label6;
 	TLabel *Label7;
-	TEdit *EditBmpFall;
-	TEdit *EditBmpWinter;
-	TEdit *EditBmpHSWinter;
 	TEdit *EditBmpLightmap;
 	TEdit *EditBmpAlpha;
 	TButton *ButtonRefBmpSummer;
-	TButton *ButtonRefBmpSpring;
-	TButton *ButtonRefBmpFall;
-	TButton *ButtonRefBmpWinter;
-	TButton *ButtonRefBmpHSWinter;
 	TButton *ButtonRefBmpLightmap;
 	TButton *ButtonRefBmpAlpha;
 	TLabel *Label8;
@@ -109,16 +96,11 @@ __published:	// IDE managed components
 	TEdit *EditBoundRight;
 	TEdit *EditBoundBottom;
 	void __fastcall ButtonRefOutDirClick(TObject *Sender);
-	void __fastcall ButtonRefBmpSummerClick(TObject *Sender);
-	void __fastcall ButtonRefBmpSpringClick(TObject *Sender);
-	void __fastcall ButtonRefBmpFallClick(TObject *Sender);
-	void __fastcall ButtonRefBmpWinterClick(TObject *Sender);
-	void __fastcall ButtonRefBmpHSWinterClick(TObject *Sender);
-	void __fastcall ButtonRefBmpLightmapClick(TObject *Sender);
+	void __fastcall ButtonRefBmpDayClick(TObject *Sender);
+	void __fastcall ButtonRefBmpNightClick(TObject *Sender);
 	void __fastcall ButtonRefBmpAlphaClick(TObject *Sender);
 	void __fastcall OnCoordEditExit(TObject *Sender);
 	void __fastcall OnResEditExit(TObject *Sender);
-	void __fastcall CheckSeasonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 
 private:	// User decl.

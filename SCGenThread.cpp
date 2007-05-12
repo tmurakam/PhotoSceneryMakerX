@@ -31,13 +31,9 @@
 #include "SCGenThread.h"
 #include "SCGenFrm.h"
 #include "OptDlg.h"
-#include "targa.h"
+//#include "targa.h"
 
 #pragma package(smart_init)
-
-//---------------------------------------------------------------------------
-const char *SeasonSuffix[] = SEASON_SUFFIX;
-const char *SeasonName[] = SEASON_NAME;
 
 //---------------------------------------------------------------------------
 // Constructor
@@ -93,43 +89,32 @@ void SCGenThread::MakeInf(void)
 	MkDir(Proj->OutDir + "\\TmpBmp");
 	MkDir(Proj->OutDir + "\\TmpAlpha");
 
-	if (!Proj->HasSeason) {
-		MakeInf(BM_SUMMER);
-		MakeInf(BM_ALPHA);
-	} else {
-		for (int i = 0; i < BM_MAX; i++) {
-			MakeInf(i);
-		}
-	}
+        MakeInfMain();
 }
 
 // Get INF file name
-AnsiString SCGenThread::InfFileName(int season)
+AnsiString SCGenThread::InfFileName(void)
 {
 	AnsiString path = Proj->OutDir;
-	path.sprintf("%s\\%s.inf", Proj->OutDir, SeasonSuffix[season]);
+	path.sprintf("%s\\PhotoSceneryMaker.inf", Proj->OutDir);
 
 	return path;
 }
 
 // Get BMP path
-AnsiString SCGenThread::BmpPath(int season)
+AnsiString SCGenThread::BmpPath(void)
 {
 	AnsiString path;
-	if (season == BM_ALPHA) {
-		path.sprintf("%s\\TmpAlpha", Proj->OutDir);
-	} else {
-		path.sprintf("%s\\TmpBmp", Proj->OutDir);
-	}
+	path.sprintf("%s\\TmpBmp", Proj->OutDir);
 	return path;
 }
 
 // Create one inf file
-void SCGenThread::MakeInf(int season)
+void SCGenThread::MakeInfMain(void)
 {
-	AnsiString inf = InfFileName(season);
+	AnsiString inf = InfFileName();
 
-	AnsiString BmpFile = Proj->BmpFile(season);
+	AnsiString BmpFile = Proj->BmpFile();
 	if (BmpFile.IsEmpty()) {
 		return;
 	}
@@ -160,12 +145,14 @@ void SCGenThread::MakeInf(int season)
 
 	// Build Destination section
 	fprintf(fp, "\n[Destination]\n");
-	fprintf(fp, "\tDestDir = \"%s\"\n", BmpPath(season).c_str());
+	fprintf(fp, "\tDestDir = \"%s\"\n", BmpPath().c_str());
 	fprintf(fp, "\tDestBaseFileName = \"%s\"\n", Proj->BaseFile.c_str());
+#if 0
 	if (Proj->HasSeason) {
 		fprintf(fp, "\twithseasons = 1\n");
 		fprintf(fp, "\tseason = %s\n", SeasonName[season]);
 	}
+#endif
 	
 	if (trans->Boundary.useWhole) {
 		fprintf(fp, "\tUseSourceDimensions = 1\n");
@@ -239,38 +226,27 @@ int SCGenThread::ExecCmd(AnsiString cmdline, AnsiString desc)
 //
 void SCGenThread::Resample(void)
 {
-	for (int i = 0; i < BM_MAX; i++) {
-		if (Terminated) return;
+	if (Terminated) return;
 
-		if (i != BM_SUMMER && i != BM_ALPHA && !Proj->HasSeason) {
-			continue;
-		}
-		if (i == BM_ALPHA && !Proj->HasAlpha) {
-			continue;
-		}
+	SetStatusMsg("Resampling...");
 
-		AnsiString fmt = _("Resampling : %s...");
-		AnsiString msg;
-		msg.sprintf(fmt.c_str(), SeasonName[i]);
-		SetStatusMsg(msg);
+	// Change directory to working directory
+	AnsiString bmppath = BmpPath();
+	ChDir(bmppath);
 
-		// Change directory to working directory
-		AnsiString bmppath = BmpPath(i);
-		ChDir(bmppath);
+	// Execute resample
+	AnsiString inf = InfFileName();
 
-		// Execute resample
-		AnsiString inf = InfFileName(i);
-	
-		AnsiString cmdline;
-		cmdline.sprintf("\"%s\\resample.exe\" \"%s\"",
-				OptionDlg->GetSDKPath(), inf);
-		if (ExecCmd(cmdline, "resample.exe") != 0) {
-			AnsiString title = _("Error");
-			AnsiString mes = _("Some errors occured.");
-			Application->MessageBox(mes.c_str(), title.c_str(), MB_OK);
-		}
+	AnsiString cmdline;
+	cmdline.sprintf("\"%s\\resample.exe\" \"%s\"",
+			OptionDlg->GetSDKPath(), inf);
+	if (ExecCmd(cmdline, "resample.exe") != 0) {
+		AnsiString title = _("Error");
+		AnsiString mes = _("Some errors occured.");
+		Application->MessageBox(mes.c_str(), title.c_str(), MB_OK);
 	}
 
+#if 0
 	// Move tmf file : Only one tmf file is needed.
 	AnsiString tmf;
 	tmf.sprintf("%s\\%s.tmf", BmpPath(BM_SUMMER), Proj->BaseFile);
@@ -283,6 +259,7 @@ void SCGenThread::Resample(void)
 	// Delete unused files.
 	tmf.sprintf("%s\\%s.tmf", BmpPath(BM_ALPHA), Proj->BaseFile);
 	DeleteFile(tmf.c_str());
+#endif
 }
 
 //---------------------------------------------------------------------------
@@ -290,6 +267,7 @@ void SCGenThread::Resample(void)
 //
 void SCGenThread::MergeAlpha(void)
 {
+#if 0
 	AnsiString msg = _("Merging Alpha Textures...");
 	SetStatusMsg(msg);
 
@@ -342,6 +320,7 @@ void SCGenThread::MergeAlpha(void)
 		ret = FindNext(rec);
 	}
 	FindClose(rec);
+#endif
 }
 
 //---------------------------------------------------------------------------
@@ -349,23 +328,26 @@ void SCGenThread::MergeAlpha(void)
 //
 void SCGenThread::ConvTex(void)
 {
+#if 0
 	AnsiString msg = _("Converting Textures...");
 	SetStatusMsg(msg);
 
 	AnsiString Imagetool;
-	Imagetool.sprintf("%s\\imagetool.exe", OptionDlg->GetImagetoolPath());
+	Imagetool.sprintf("%s\\imagetool.exe", OptionDlg->GetSDKPath());
 
 	AnsiString cmdline;
 	cmdline.sprintf("\"%s\" -DXT1 -e bmp -terrainphoto \"%s\\texture\\*.tga\"",
 		Imagetool, Proj->OutDir);
 
 	ExecCmd(cmdline, "imagetool.exe");
+#endif
 }
 //---------------------------------------------------------------------------
 // Generate BGL file
 //
 void SCGenThread::GenBgl(void)
 {
+#if 0
 	AnsiString msg = _("Generating BGL files...");
 	SetStatusMsg(msg);
 
@@ -398,6 +380,7 @@ void SCGenThread::GenBgl(void)
 	// Convert BGL file
 	cmdline.sprintf("\"%s\\tmf2bgl.exe\" \"%s\" \"%s\"", sdkpath, tmfc, bgl);
 	ExecCmd(cmdline, "tmf2bgl.exe");
+#endif        
 }
 
 //---------------------------------------------------------------------------

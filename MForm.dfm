@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 253
   Top = 122
   Caption = 'Photo Scenery Maker'
-  ClientHeight = 461
+  ClientHeight = 482
   ClientWidth = 628
   Color = clBtnFace
   Font.Charset = SHIFTJIS_CHARSET
@@ -23,7 +23,7 @@ object MainForm: TMainForm
   TextHeight = 14
   object StatusBar: TStatusBar
     Left = 0
-    Top = 442
+    Top = 463
     Width = 628
     Height = 19
     Panels = <
@@ -38,16 +38,18 @@ object MainForm: TMainForm
         Width = 120
       end>
     SimpleText = 'Ready'
+    ExplicitTop = 442
   end
   object ScrollBox: TScrollBox
     Left = 0
     Top = 0
     Width = 628
-    Height = 442
+    Height = 463
     HorzScrollBar.Tracking = True
     VertScrollBar.Tracking = True
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 442
     object PaintBox: TPaintBox
       Left = 0
       Top = 0
@@ -98,30 +100,14 @@ object MainForm: TMainForm
     end
     object MenuView: TMenuItem
       Caption = 'Vew(&V)'
-      object MenuViewSummer: TMenuItem
-        Caption = 'Summer'
+      object MenuViewDay: TMenuItem
+        Caption = 'Day'
         Checked = True
-        OnClick = MenuViewSummerClick
+        OnClick = MenuViewDayClick
       end
-      object MenuViewSpring: TMenuItem
-        Caption = 'Spring'
-        OnClick = MenuViewSpringClick
-      end
-      object MenuViewFall: TMenuItem
-        Caption = 'Fall'
-        OnClick = MenuViewFallClick
-      end
-      object MenuViewWinter: TMenuItem
-        Caption = 'Winter'
-        OnClick = MenuViewWinterClick
-      end
-      object MenuViewHSWinter: TMenuItem
-        Caption = 'Hard Winter'
-        OnClick = MenuViewHSWinterClick
-      end
-      object MenuViewLightmap: TMenuItem
-        Caption = 'Lightmap'
-        OnClick = MenuViewLightmapClick
+      object MenuViewNight: TMenuItem
+        Caption = 'Night'
+        OnClick = MenuViewNightClick
       end
       object MenuViewAlpha: TMenuItem
         Caption = 'Water(Alpha)'

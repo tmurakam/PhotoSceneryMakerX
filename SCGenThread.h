@@ -46,9 +46,9 @@ protected:
 	int Sw;
 
 	void MakeInf(void);
-	AnsiString InfFileName(int season);
-	AnsiString BmpPath(int season);
-	void MakeInf(int season);
+	AnsiString InfFileName(void);
+	AnsiString BmpPath(void);
+	void MakeInfMain(void);
 
 	int ExecCmd(AnsiString cmdline, AnsiString desc);
 

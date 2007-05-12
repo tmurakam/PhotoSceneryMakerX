@@ -56,7 +56,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         isTranslated = false;
 
 	bitmap = NULL;
-	curBmpIdx = BM_SUMMER;
+	curBmpIdx = BM_DAY;
 }
 
 //---------------------------------------------------------------------------
@@ -281,12 +281,8 @@ void TMainForm::UpdateMenu(void)
 
 	MenuPrjProperty->Enabled = true;
 	MenuView->Enabled = true;
-	MenuViewSummer->Checked   = (curBmpIdx == BM_SUMMER);
-	MenuViewSpring->Checked   = (curBmpIdx == BM_SPRING);
-	MenuViewFall->Checked     = (curBmpIdx == BM_FALL);
-	MenuViewWinter->Checked   = (curBmpIdx == BM_WINTER);
-	MenuViewHSWinter->Checked = (curBmpIdx == BM_HSWINTER);
-	MenuViewLightmap->Checked = (curBmpIdx == BM_LIGHTMAP);
+	MenuViewDay->Checked   = (curBmpIdx == BM_DAY);
+	MenuViewNight->Checked = (curBmpIdx == BM_NIGHT);
 	MenuViewAlpha->Checked    = (curBmpIdx == BM_ALPHA);
 
 	if (!isCpSpecifing) {
@@ -660,39 +656,15 @@ void __fastcall TMainForm::PaintBoxPaint(TObject *Sender)
 }	
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::MenuViewSummerClick(TObject *Sender)
+void __fastcall TMainForm::MenuViewDayClick(TObject *Sender)
 {
-	ChangeBmp(BM_SUMMER);
+	ChangeBmp(BM_DAY);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::MenuViewSpringClick(TObject *Sender)
+void __fastcall TMainForm::MenuViewNightClick(TObject *Sender)
 {
-	ChangeBmp(BM_SPRING);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::MenuViewFallClick(TObject *Sender)
-{
-	ChangeBmp(BM_FALL);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::MenuViewWinterClick(TObject *Sender)
-{
-	ChangeBmp(BM_WINTER);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::MenuViewHSWinterClick(TObject *Sender)
-{
-	ChangeBmp(BM_HSWINTER);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::MenuViewLightmapClick(TObject *Sender)
-{
-	ChangeBmp(BM_LIGHTMAP);
+	ChangeBmp(BM_NIGHT);
 }
 //---------------------------------------------------------------------------
 

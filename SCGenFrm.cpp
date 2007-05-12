@@ -69,11 +69,6 @@ bool TSCGenForm::SanityCheck(void)
 	Transform *trans = proj->Trans;
 	AnsiString msg;
 
-	// Check resample version
-	if (!OptionDlg->CheckResampleVersion()) {
-		return false;
-	}
-
 	//
 	// check parameters
 	//

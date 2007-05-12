@@ -49,17 +49,10 @@ void __fastcall TPrjForm::FormCreate(TObject *Sender)
 //---------------------------------------------------------------------------
 void TPrjForm::LoadData(PSMProject *proj)
 {
-	EditBmpSummer->Text   = proj->BmpFile(BM_SUMMER);
-	EditBmpSpring->Text   = proj->BmpFile(BM_SPRING);
-	EditBmpFall->Text     = proj->BmpFile(BM_FALL);
-	EditBmpWinter->Text   = proj->BmpFile(BM_WINTER);
-	EditBmpHSWinter->Text = proj->BmpFile(BM_HSWINTER);
-	EditBmpLightmap->Text = proj->BmpFile(BM_LIGHTMAP);
+	EditBmpDay->Text   = proj->BmpFile(BM_DAY);
+	EditBmpLightmap->Text = proj->BmpFile(BM_NIGHT);
 	EditBmpAlpha->Text    = proj->BmpFile(BM_ALPHA);
 
-	CheckSeason->Checked = proj->HasSeason;
-	CheckSeasonClick(NULL);
-	
 	EditWidth->Text = proj->Trans->Width;
 	EditHeight->Text = proj->Trans->Height;
 
@@ -83,15 +76,9 @@ void TPrjForm::LoadData(PSMProject *proj)
 
 void TPrjForm::UpdateData(PSMProject *proj)
 {
-	proj->SetBmpFile(BM_SUMMER,   EditBmpSummer->Text);
-	proj->SetBmpFile(BM_SPRING,   EditBmpSpring->Text);
-	proj->SetBmpFile(BM_FALL,     EditBmpFall->Text);
-	proj->SetBmpFile(BM_WINTER,   EditBmpWinter->Text);
-	proj->SetBmpFile(BM_HSWINTER, EditBmpHSWinter->Text);
-	proj->SetBmpFile(BM_LIGHTMAP, EditBmpLightmap->Text);
-	proj->SetBmpFile(BM_ALPHA,    EditBmpAlpha->Text);
-
-	proj->HasSeason = CheckSeason->Checked;
+	proj->SetBmpFile(BM_DAY,   EditBmpDay->Text);
+	proj->SetBmpFile(BM_NIGHT, EditBmpLightmap->Text);
+	proj->SetBmpFile(BM_ALPHA, EditBmpAlpha->Text);
 
 	proj->Trans->Base.lat.SetStr(EditN->Text);
 	proj->Trans->Base.lon.SetStr(EditW->Text);
@@ -137,37 +124,13 @@ void TPrjForm::RefBmpFile(TEdit *edit)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TPrjForm::ButtonRefBmpSummerClick(TObject *Sender)
+void __fastcall TPrjForm::ButtonRefBmpDayClick(TObject *Sender)
 {
-	RefBmpFile(EditBmpSummer);
+	RefBmpFile(EditBmpDay);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TPrjForm::ButtonRefBmpSpringClick(TObject *Sender)
-{
-	RefBmpFile(EditBmpSpring);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TPrjForm::ButtonRefBmpFallClick(TObject *Sender)
-{
-	RefBmpFile(EditBmpFall);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TPrjForm::ButtonRefBmpWinterClick(TObject *Sender)
-{
-	RefBmpFile(EditBmpWinter);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TPrjForm::ButtonRefBmpHSWinterClick(TObject *Sender)
-{
-	RefBmpFile(EditBmpHSWinter);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TPrjForm::ButtonRefBmpLightmapClick(TObject *Sender)
+void __fastcall TPrjForm::ButtonRefBmpNightClick(TObject *Sender)
 {
 	RefBmpFile(EditBmpLightmap);
 }
@@ -234,24 +197,6 @@ void __fastcall TPrjForm::OnResEditExit(TObject *Sender)
 	double yres2 = 10000 * 1000 * yres / 90.0;
 	EditXres2->Text = xres2;
 	EditYres2->Text = yres2;
-}
-//---------------------------------------------------------------------------
-void __fastcall TPrjForm::CheckSeasonClick(TObject *Sender)
-{
-	bool sw;
-
-	sw = CheckSeason->Checked;
-
-#define	SETV(t) \
-	EditBmp ## t ## ->Enabled = sw; \
-	ButtonRefBmp ## t ## ->Enabled = sw
-
-	SETV(Spring);
-	SETV(Fall);
-	SETV(Winter);
-	SETV(HSWinter);
-	SETV(Lightmap);
-	
 }
 //---------------------------------------------------------------------------
 

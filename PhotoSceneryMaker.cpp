@@ -28,12 +28,12 @@
 #include "gnugettext.hpp"
 
 //---------------------------------------------------------------------------
-USEFORM("MForm.cpp", MainForm);
-USEFORM("LLDlg.cpp", LatLonDlg);
-USEFORM("OptDlg.cpp", OptionDlg);
 USEFORM("AboutDlg.cpp", AboutDialog);
-USEFORM("SCGenFrm.cpp", SCGenForm);
+USEFORM("LLDlg.cpp", LatLonDlg);
+USEFORM("MForm.cpp", MainForm);
+USEFORM("OptDlg.cpp", OptionDlg);
 USEFORM("PJForm.cpp", PrjForm);
+USEFORM("SCGenFrm.cpp", SCGenForm);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

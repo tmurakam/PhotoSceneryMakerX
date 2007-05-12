@@ -59,11 +59,6 @@ AnsiString TOptionDlg::GetSDKPath(void)
 	return EditSDKPath->Text;
 }
 
-AnsiString TOptionDlg::GetImagetoolPath(void)
-{
-	return EditImagetoolPath->Text;
-}
-
 //---------------------------------------------------------------------------
 // Change Languages
 void TOptionDlg::ChangeLang(void)
@@ -96,7 +91,6 @@ void TOptionDlg::LoadReg(void)
 	AnsiString sdkpath, lng;
 	try {
 		EditSDKPath->Text = reg->ReadString("TerrainSDKPath");
-		EditImagetoolPath->Text = reg->ReadString("ImagetoolPath");
 		lng = reg->ReadString("Language");
 	}
 	catch (const Exception &e) {
@@ -145,7 +139,6 @@ void __fastcall TOptionDlg::ButtonOKClick(TObject *Sender)
 	reg->OpenKey(REG_KEY, true);
 
 	reg->WriteString("TerrainSDKPath", EditSDKPath->Text);
-	reg->WriteString("ImagetoolPath", EditImagetoolPath->Text);
 
 	// Change Language
 	curLangIdx = ListLang->ItemIndex;
@@ -177,55 +170,5 @@ void __fastcall TOptionDlg::ButtonBrowseSDKClick(TObject *Sender)
 	//
 	AnsiString save = EditSDKPath->Text;
 	EditSDKPath->Text = ExtractFileDir(OpenDialog->FileName);
-
-	if (!CheckResampleVersion()) {
-		EditSDKPath->Text = save;
-	}
 }
-//---------------------------------------------------------------------------
 
-
-void __fastcall TOptionDlg::ButtonBrowserImagetoolClick(TObject *Sender)
-{
-#if 0
-	AnsiString f = SelectFolder("", Handle);
-	if (!f.IsEmpty()) {
-		EditImagetoolPath->Text = f;
-	}
-#endif
-	OpenDialog->InitialDir = EditImagetoolPath->Text;
-	OpenDialog->FileName = "imagetool.exe";
-	OpenDialog->Filter = "Imagetool|imagetool.exe";
-	if (!OpenDialog->Execute()) return;
-
-	EditImagetoolPath->Text = ExtractFileDir(OpenDialog->FileName);
-}
-//---------------------------------------------------------------------------
-bool __fastcall TOptionDlg::CheckResampleVersion(void)
-{
-	AnsiString resample = EditSDKPath->Text + "\\resample.exe";
-
-	bool validResample = false;
-	DWORD dummy;
-	DWORD vsz = GetFileVersionInfoSize(resample.c_str(), &dummy);
-	if (vsz > 0) {
-		void *pVerInfo = new char[vsz];
-
-		if (GetFileVersionInfo(resample.c_str(), 0, vsz, pVerInfo)) {
-			char *verstr;
-			UINT len;
-			VerQueryValue(pVerInfo, "\\StringFileInfo\\040904b0\\FileVersion",
-				      (LPVOID *)&verstr, &len);
-			if (strcmp(verstr, "Version 1.0.0.1") == 0) {
-				validResample = true;
-			}
-		}
-		delete pVerInfo;
-	}
-	if (!validResample) {
-		AnsiString msg = _("Resample.exe version is invalid. Please use FS2000 Terrain SDK!");
-		Application->MessageBox(msg.c_str(), "Error", MB_OK | MB_ICONERROR);
-		return false;
-	}
-	return true;
-}

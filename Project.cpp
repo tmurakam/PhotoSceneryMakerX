@@ -32,12 +32,8 @@ PSMProject::PSMProject()
 {
 	modified = false;
 
-	BmpKey[BM_SUMMER]   = "BMPSummer";
-	BmpKey[BM_SPRING]   = "BMPSpring";
-	BmpKey[BM_FALL]     = "BMPFall";
-	BmpKey[BM_WINTER]   = "BMPWinter";
-	BmpKey[BM_HSWINTER] = "BMPHSWinter";
-	BmpKey[BM_LIGHTMAP] = "BMPLightmap";
+	BmpKey[BM_DAY]   = "BMPDay";
+	BmpKey[BM_NIGHT]    = "BMPNight";
 	BmpKey[BM_ALPHA]    = "BMPAlpha";
 }
 
@@ -46,7 +42,6 @@ void PSMProject::LoadFromFile(AnsiString prjfile)
 	prjpath = prjfile;
 
 	TIniFile *ini = new TIniFile(prjpath);
-	hasSeason = ini->ReadBool("Source", "HasSeason", false);
 
 	for (int i = 0; i < BM_MAX; i++) {
 		BmpFiles[i] = ini->ReadString("Source", BmpKey[i], "");
@@ -90,8 +85,6 @@ bool PSMProject::SaveToFile(AnsiString prjfile)
 	}
 
 	TIniFile *ini = new TIniFile(prjpath);
-	ini->WriteBool("Source", "HasSeason", hasSeason);
-
 	for (int i = 0; i < BM_MAX; i++) {
 		ini->WriteString("Source", BmpKey[i], BmpFiles[i]);
 	}
