@@ -1,7 +1,7 @@
 /*
- * Photo Scenery Maker
+ * Photo Scenery Maker X
  *
- * Copyright (C) 2003 Takuya Murakami
+ * Copyright (C) 2003-2007 Takuya Murakami
  *
  * SCGenThread.h : Scenery generation thread
  *

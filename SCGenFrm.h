@@ -1,7 +1,7 @@
 /*
  * Photo Scenery Maker
  *
- * Copyright (C) 2003 Takuya Murakami
+ * Copyright (C) 2003-2007 Takuya Murakami
  *
  * SCGenFrm.h : Scenery generation dialog
  *

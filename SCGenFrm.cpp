@@ -1,7 +1,7 @@
 /*
  * Photo Scenery Maker
  *
- * Copyright (C) 2003 Takuya Murakami
+ * Copyright (C) 2003-2007 Takuya Murakami
  *
  * SCGenFrm.cpp : Scenery generation dialog
  *
@@ -37,7 +37,7 @@
 
 #include "Util.h"
 #include "OptDlg.h"
-#include "targa.h"
+//#include "targa.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

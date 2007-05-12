@@ -40,7 +40,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
         try
         {
 		 Application->Initialize();
-                 Application->Title = "Photo Scenery Maker";
+                 Application->Title = "Photo Scenery Maker for FSX";
 		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->CreateForm(__classid(TLatLonDlg), &LatLonDlg);
 		Application->CreateForm(__classid(TOptionDlg), &OptionDlg);
