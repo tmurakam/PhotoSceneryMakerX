@@ -35,6 +35,8 @@ PSMProject::PSMProject()
 	BmpKey[BM_DAY]   = "BMPDay";
 	BmpKey[BM_NIGHT]    = "BMPNight";
 	BmpKey[BM_ALPHA]    = "BMPAlpha";
+
+        lod = -1;	// default
 }
 
 void PSMProject::LoadFromFile(AnsiString prjfile)
@@ -73,6 +75,7 @@ void PSMProject::LoadFromFile(AnsiString prjfile)
 
 	outdir   = ini->ReadString("Output", "Directory", "");
 	basefile = ini->ReadString("Output", "BaseFile", "");
+        lod = ini->ReadInteger("Output", "LOD", -1);
 
 	delete(ini);
 
@@ -112,6 +115,7 @@ bool PSMProject::SaveToFile(AnsiString prjfile)
 
 	ini->WriteString("Output", "Directory", outdir);
 	ini->WriteString("Output", "BaseFile",  basefile);
+        ini->WriteInteger("Output", "LOD", lod);
 
 	delete(ini);
 

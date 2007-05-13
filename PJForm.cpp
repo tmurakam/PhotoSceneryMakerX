@@ -72,6 +72,8 @@ void TPrjForm::LoadData(PSMProject *proj)
 	EditBoundLeft->Text = proj->Trans->Boundary.left;
 	EditBoundRight->Text = proj->Trans->Boundary.right;
 	EditBoundBottom->Text = proj->Trans->Boundary.bottom;
+
+        EditLOD->Text = proj->Lod;
 }
 
 void TPrjForm::UpdateData(PSMProject *proj)
@@ -96,6 +98,8 @@ void TPrjForm::UpdateData(PSMProject *proj)
 	proj->Trans->Boundary.left = EditBoundLeft->Text.ToInt();
 	proj->Trans->Boundary.right = EditBoundRight->Text.ToInt();
 	proj->Trans->Boundary.bottom = EditBoundBottom->Text.ToInt();
+
+        proj->Lod = EditLOD->Text.ToInt();
 
 }
 

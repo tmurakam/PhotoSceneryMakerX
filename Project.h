@@ -56,6 +56,7 @@ private:
 	// Output information
 	AnsiString outdir;
 	AnsiString basefile;
+        int lod;
 
 	// project info
 	AnsiString	prjpath;
@@ -64,6 +65,7 @@ private:
 
 	void writeOutDir(const AnsiString &d)	{ outdir = d; modified = true; }
 	void writeBaseFile(const AnsiString &b)	{ basefile = b; modified = true; }
+        void writeLod(int x) { lod = x; modified = true; }
 
         bool hasNight(void)		{ return !BmpFiles[BM_NIGHT].IsEmpty(); }
 	bool hasAlpha(void)		{ return !BmpFiles[BM_ALPHA].IsEmpty(); }
@@ -84,6 +86,7 @@ public:
 	__property bool HasAlpha = {read=hasAlpha};
 	__property AnsiString OutDir = {read=outdir, write=writeOutDir};
 	__property AnsiString BaseFile = {read=basefile, write=writeBaseFile};
+        __property int Lod = { read=lod, write=writeLod};
 };
 
 #endif

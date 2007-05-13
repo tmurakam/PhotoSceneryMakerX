@@ -164,10 +164,15 @@ void SCGenThread::MakeInf(void)
         }
 
 	// Build Destination section
-	fprintf(fp, "\n[Destination]\n");
-	fprintf(fp, "\tDestDir = \"%s\"\n", Proj->OutDir.c_str());
-	fprintf(fp, "\tDestBaseFileName = \"%s\"\n", Proj->BaseFile.c_str());
-
+	fprintf(fp, "[Destination]\n");
+	fprintf(fp, "DestDir = \"%s\"\n", Proj->OutDir.c_str());
+	fprintf(fp, "DestBaseFileName = \"%s\"\n", Proj->BaseFile.c_str());
+	if (Proj->Lod < 0) {
+        	fprintf(fp, "LOD = Auto\n");
+        } else {
+	        fprintf(fp, "LOD = 7,%d\n", Proj->Lod);
+        }
+        
 	if (trans->Boundary.useWhole) {
 		fprintf(fp, "\tUseSourceDimensions = 1\n");
 	} else {

@@ -26,10 +26,6 @@ object PrjForm: TPrjForm
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Bitmaps'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label1: TLabel
         Left = 16
         Top = 36
@@ -103,10 +99,6 @@ object PrjForm: TPrjForm
     object TabSheet2: TTabSheet
       Caption = 'Coordinates'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox1: TGroupBox
         Left = 8
         Top = 8
@@ -285,10 +277,13 @@ object PrjForm: TPrjForm
     object TabSheet3: TTabSheet
       Caption = 'Output'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      object Label2: TLabel
+        Left = 32
+        Top = 336
+        Width = 35
+        Height = 14
+        Caption = 'Label2'
+      end
       object GroupFileOutput: TGroupBox
         Left = 8
         Top = 8
@@ -404,6 +399,35 @@ object PrjForm: TPrjForm
           Width = 81
           Height = 22
           TabOrder = 4
+        end
+      end
+      object GroupBox3: TGroupBox
+        Left = 8
+        Top = 295
+        Width = 393
+        Height = 64
+        Caption = 'Scenery Resolution'
+        TabOrder = 2
+        object Label3: TLabel
+          Left = 16
+          Top = 32
+          Width = 48
+          Height = 14
+          Caption = 'Max LOD'
+        end
+        object Label4: TLabel
+          Left = 216
+          Top = 32
+          Width = 143
+          Height = 14
+          Caption = '(-1: Auto, 13: 4.7m/pixel)'
+        end
+        object EditLOD: TEdit
+          Left = 70
+          Top = 28
+          Width = 121
+          Height = 22
+          TabOrder = 0
         end
       end
     end

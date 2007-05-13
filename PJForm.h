@@ -95,6 +95,11 @@ __published:	// IDE managed components
 	TEdit *EditBoundLeft;
 	TEdit *EditBoundRight;
 	TEdit *EditBoundBottom;
+	TGroupBox *GroupBox3;
+	TLabel *Label2;
+	TLabel *Label3;
+	TEdit *EditLOD;
+	TLabel *Label4;
 	void __fastcall ButtonRefOutDirClick(TObject *Sender);
 	void __fastcall ButtonRefBmpDayClick(TObject *Sender);
 	void __fastcall ButtonRefBmpNightClick(TObject *Sender);
