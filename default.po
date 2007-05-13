@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-05-13 01:52\n"
-"PO-Revision-Date: 2007-05-13 01:52\n"
+"POT-Creation-Date: 2007-05-13 17:25\n"
+"PO-Revision-Date: 2007-05-13 17:25\n"
 "Last-Translator: Somebody <your.email@address.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -161,7 +161,7 @@ msgstr ""
 #. OptionDlg..ButtonOK..Caption
 #: OptDlg.dfm:38
 #. PrjForm..Panel1..Button1..Caption
-#: PJForm.dfm:423
+#: PJForm.dfm:609
 msgid "OK"
 msgstr ""
 
@@ -170,7 +170,7 @@ msgstr ""
 #. OptionDlg..Button2..Caption
 #: OptDlg.dfm:48
 #. PrjForm..Panel1..Button2..Caption
-#: PJForm.dfm:432
+#: PJForm.dfm:618
 msgid "Cancel"
 msgstr ""
 
@@ -184,157 +184,137 @@ msgid "Ready"
 msgstr ""
 
 #. MainForm..MainMenu..F1..Caption
-#: MForm.dfm:67
+#: MForm.dfm:69
 msgid "File(&F)"
 msgstr ""
 
 #. MainForm..MainMenu..F1..MenuNewPrj..Caption
-#: MForm.dfm:69
+#: MForm.dfm:71
 msgid "New(&N)..."
 msgstr ""
 
 #. MainForm..MainMenu..F1..MenuOpenPrj..Caption
-#: MForm.dfm:73
+#: MForm.dfm:75
 msgid "Open(&O)..."
 msgstr ""
 
 #. MainForm..MainMenu..F1..MenuPrjSave..Caption
-#: MForm.dfm:77
+#: MForm.dfm:79
 msgid "Save(&S)"
 msgstr ""
 
 #. MainForm..MainMenu..F1..MenuPrjSaveAs..Caption
-#: MForm.dfm:81
+#: MForm.dfm:83
 msgid "Save As(&A)..."
 msgstr ""
 
 #. MainForm..MainMenu..F1..N1..Caption
-#: MForm.dfm:85
+#: MForm.dfm:87
 #. MainForm..MainMenu..F1..N5..Caption
-#: MForm.dfm:92
+#: MForm.dfm:94
 #. MainForm..MainMenu..H1..N2..Caption
-#: MForm.dfm:164
+#: MForm.dfm:150
 msgid "-"
 msgstr ""
 
 #. MainForm..MainMenu..F1..MenuPrjProperty..Caption
-#: MForm.dfm:88
+#: MForm.dfm:90
 msgid "Project Property(&P)..."
 msgstr ""
 
 #. MainForm..MainMenu..F1..MenuQuit..Caption
-#: MForm.dfm:95
+#: MForm.dfm:97
 msgid "Quit(&Q)"
 msgstr ""
 
-#. MainForm..MainMenu..MenuView..Caption
-#: MForm.dfm:100
-msgid "Vew(&V)"
-msgstr ""
-
-#. MainForm..MainMenu..MenuView..MenuViewDay..Caption
-#: MForm.dfm:102
-msgid "Day"
-msgstr ""
-
-#. MainForm..MainMenu..MenuView..MenuViewNight..Caption
-#: MForm.dfm:107
-msgid "Night"
-msgstr ""
-
-#. MainForm..MainMenu..MenuView..MenuViewAlpha..Caption
-#: MForm.dfm:111
-msgid "Water(Alpha)"
-msgstr ""
-
 #. MainForm..MainMenu..MenuCalibration..Caption
-#: MForm.dfm:116
+#: MForm.dfm:102
 msgid "Calibration(&C)"
 msgstr ""
 
 #. MainForm..MainMenu..MenuCalibration..SetCPoint..Caption
-#: MForm.dfm:118
+#: MForm.dfm:104
 msgid "2 Point Calibration(&P)..."
 msgstr ""
 
 #. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..Caption
-#: MForm.dfm:122
+#: MForm.dfm:108
 #. PrjForm..PageControl1..TabSheet2..GroupBox1..Caption
-#: PJForm.dfm:115
+#: PJForm.dfm:269
 msgid "Bitmap Boundary"
 msgstr ""
 
 #. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..MenuTop..Caption
-#: MForm.dfm:124
+#: MForm.dfm:110
 msgid "Top(&T)"
 msgstr ""
 
 #. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..MenuBottom..Caption
-#: MForm.dfm:128
+#: MForm.dfm:114
 msgid "Bottom(&B)"
 msgstr ""
 
 #. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..MenuLeft..Caption
-#: MForm.dfm:132
+#: MForm.dfm:118
 msgid "Left(&L)"
 msgstr ""
 
 #. MainForm..MainMenu..MenuCalibration..MenuBitmapBoundary..MenuRight..Caption
-#: MForm.dfm:136
+#: MForm.dfm:122
 msgid "Right(&R)"
 msgstr ""
 
 #. MainForm..MainMenu..MenuCalibration..ExecCorrection..Caption
-#: MForm.dfm:141
+#: MForm.dfm:127
 msgid "Calculate optimal bitmap size (&O)"
 msgstr ""
 
 #. MainForm..MainMenu..MenuSCGen..Caption
-#: MForm.dfm:146
+#: MForm.dfm:132
 msgid "Scenery Generation(&S)"
 msgstr ""
 
 #. MainForm..MainMenu..MenuOption..Caption
-#: MForm.dfm:150
+#: MForm.dfm:136
 msgid "Option (&O)"
 msgstr ""
 
 #. MainForm..MainMenu..H1..Caption
-#: MForm.dfm:154
+#: MForm.dfm:140
 msgid "Help(&H)"
 msgstr ""
 
 #. MainForm..MainMenu..H1..MenuTutorial..Caption
-#: MForm.dfm:156
+#: MForm.dfm:142
 msgid "Tutorial(&T)..."
 msgstr ""
 
 #. MainForm..MainMenu..H1..MenuManual..Caption
-#: MForm.dfm:160
+#: MForm.dfm:146
 msgid "Manual(&M)..."
 msgstr ""
 
 #. MainForm..MainMenu..H1..MenuAbout..Caption
-#: MForm.dfm:167
+#: MForm.dfm:153
 msgid "About(&A)..."
 msgstr ""
 
 #. MainForm..OpenPrjDialog..DefaultExt
-#: MForm.dfm:173
+#: MForm.dfm:159
 #. MainForm..SavePrjDialog..DefaultExt
-#: MForm.dfm:179
+#: MForm.dfm:165
 msgid "psm"
 msgstr ""
 
 #. MainForm..OpenPrjDialog..Filter
-#: MForm.dfm:174
-msgid "PSMX Project files (*.psmx)|*.psmx|All files "
+#: MForm.dfm:160
+msgid "Project files (*.psmx;*.psm)|*.psmx;*psm|All files "
 "(*.*)|*.*"
 msgstr ""
 
 #. MainForm..SavePrjDialog..Filter
-#: MForm.dfm:180
-msgid "Project files (*.psm)|*.psm|All files "
+#: MForm.dfm:166
+msgid "PSMX Project files (*.psmx)|*.psmx|All files "
 "(*.*)|*.*"
 msgstr ""
 
@@ -362,13 +342,9 @@ msgstr ""
 #. OptionDlg..ButtonBrowseSDK..Caption
 #: OptDlg.dfm:67
 #. PrjForm..PageControl1..TabSheet1..ButtonRefBmpSummer..Caption
-#: PJForm.dfm:80
-#. PrjForm..PageControl1..TabSheet1..ButtonRefBmpLightmap..Caption
-#: PJForm.dfm:89
-#. PrjForm..PageControl1..TabSheet1..ButtonRefBmpAlpha..Caption
-#: PJForm.dfm:98
+#: PJForm.dfm:59
 #. PrjForm..PageControl1..TabSheet3..GroupFileOutput..ButtonRefOutDir..Caption
-#: PJForm.dfm:318
+#: PJForm.dfm:475
 msgid "..."
 msgstr ""
 
@@ -383,147 +359,257 @@ msgid "Project Property"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet1..Caption
-#: PJForm.dfm:28
+#: PJForm.dfm:29
 msgid "Bitmaps"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet1..Label1..Caption
-#: PJForm.dfm:38
-msgid "Day bitmap"
+#: PJForm.dfm:37
+msgid "Bitmap file"
 msgstr ""
 
-#. PrjForm..PageControl1..TabSheet1..Label6..Caption
-#: PJForm.dfm:45
-msgid "Night bitmap"
+#. PrjForm..PageControl1..TabSheet1..Label5..Caption
+#: PJForm.dfm:44
+msgid "Bitmap number"
 msgstr ""
 
-#. PrjForm..PageControl1..TabSheet1..Label7..Caption
-#: PJForm.dfm:52
-msgid "Water(alpha)"
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..Caption
+#: PJForm.dfm:96
+msgid "Variation"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..Label6..Caption
+#: PJForm.dfm:103
+msgid "Month (valid for 'Day' type)"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..RadioButtonAll..Caption
+#: PJForm.dfm:110
+msgid "All (Day/Night)"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..RadioButtonDay..Caption
+#: PJForm.dfm:121
+msgid "Day"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..RadioButtonNight..Caption
+#: PJForm.dfm:130
+msgid "Night"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..RadioButtonLWMask..Caption
+#: PJForm.dfm:139
+msgid "Land/Water mask"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxAllMonth..Caption
+#: PJForm.dfm:148
+msgid "All month"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM1..Caption
+#: PJForm.dfm:157
+msgid "Jan."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM2..Caption
+#: PJForm.dfm:166
+msgid "Feb."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM3..Caption
+#: PJForm.dfm:175
+msgid "Mar."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM4..Caption
+#: PJForm.dfm:184
+msgid "Apr."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM5..Caption
+#: PJForm.dfm:193
+msgid "May"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM6..Caption
+#: PJForm.dfm:201
+msgid "Jun."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM7..Caption
+#: PJForm.dfm:210
+msgid "Jul."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM8..Caption
+#: PJForm.dfm:219
+msgid "Aug."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM9..Caption
+#: PJForm.dfm:228
+msgid "Sep."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM10..Caption
+#: PJForm.dfm:237
+msgid "Oct."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM11..Caption
+#: PJForm.dfm:246
+msgid "Nov."
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet1..GroupBox4..CheckBoxM12..Caption
+#: PJForm.dfm:255
+msgid "Dec."
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..Caption
-#: PJForm.dfm:104
+#: PJForm.dfm:262
 msgid "Coordinates"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBox1..Label10..Caption
-#: PJForm.dfm:122
+#: PJForm.dfm:276
 msgid "North"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBox1..Label11..Caption
-#: PJForm.dfm:129
+#: PJForm.dfm:283
 msgid "South"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBox1..Label12..Caption
-#: PJForm.dfm:136
+#: PJForm.dfm:290
 msgid "West"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBox1..Label13..Caption
-#: PJForm.dfm:143
+#: PJForm.dfm:297
 msgid "East"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBox2..Caption
-#: PJForm.dfm:183
+#: PJForm.dfm:337
 msgid "Resolution"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBox2..Label14..Caption
-#: PJForm.dfm:190
+#: PJForm.dfm:344
 msgid "xDim (second/pixel)"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBox2..Label15..Caption
-#: PJForm.dfm:197
+#: PJForm.dfm:351
 msgid "yDim (second/pixel)"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Caption
-#: PJForm.dfm:221
+#: PJForm.dfm:375
 msgid "Info"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Label16..Caption
-#: PJForm.dfm:228
+#: PJForm.dfm:382
 msgid "Bitmap Width"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Label17..Caption
-#: PJForm.dfm:235
+#: PJForm.dfm:389
 msgid "Bitmap Height"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Label18..Caption
-#: PJForm.dfm:242
+#: PJForm.dfm:396
 msgid "X resolution (m/pixel)"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet2..GroupBoxInfo..Label19..Caption
-#: PJForm.dfm:249
+#: PJForm.dfm:403
 msgid "Y resolution (m/pixel)"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet3..Caption
-#: PJForm.dfm:286
+#: PJForm.dfm:440
 msgid "Output"
 msgstr ""
 
+#. PrjForm..PageControl1..TabSheet3..Label2..Caption
+#: PJForm.dfm:447
+msgid "Label2"
+msgstr ""
+
 #. PrjForm..PageControl1..TabSheet3..GroupFileOutput..Caption
-#: PJForm.dfm:297
+#: PJForm.dfm:454
 msgid "File output"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet3..GroupFileOutput..Label9..Caption
-#: PJForm.dfm:304
+#: PJForm.dfm:461
 msgid "Base File Name"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet3..GroupFileOutput..Label8..Caption
-#: PJForm.dfm:311
+#: PJForm.dfm:468
 msgid "Output Folder"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Caption
-#: PJForm.dfm:342
+#: PJForm.dfm:499
 msgid "Bitmap boundary"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Label20..Caption
-#: PJForm.dfm:349
+#: PJForm.dfm:506
 msgid "Top"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Label21..Caption
-#: PJForm.dfm:356
+#: PJForm.dfm:513
 msgid "Left"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Label22..Caption
-#: PJForm.dfm:363
+#: PJForm.dfm:520
 msgid "Right"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..Label23..Caption
-#: PJForm.dfm:370
+#: PJForm.dfm:527
 msgid "Bottom"
 msgstr ""
 
 #. PrjForm..PageControl1..TabSheet3..GroupBitmapBoundary..CheckUseWhole..Caption
-#: PJForm.dfm:377
+#: PJForm.dfm:534
 msgid "Use whole bitmap"
 msgstr ""
 
+#. PrjForm..PageControl1..TabSheet3..GroupBox3..Caption
+#: PJForm.dfm:571
+msgid "Scenery Resolution"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet3..GroupBox3..Label3..Caption
+#: PJForm.dfm:578
+msgid "Max LOD"
+msgstr ""
+
+#. PrjForm..PageControl1..TabSheet3..GroupBox3..Label4..Caption
+#: PJForm.dfm:585
+msgid "(-1: Auto, 13: 4.7m/pixel)"
+msgstr ""
+
 #. PrjForm..OpenDialog..DefaultExt
-#: PJForm.dfm:438
+#: PJForm.dfm:624
 msgid "bmp"
 msgstr ""
 
 #. PrjForm..OpenDialog..Filter
-#: PJForm.dfm:439
+#: PJForm.dfm:625
 msgid "Bitmap File (*.bmp)|*.bmp|All Files "
 "(*.*)|*.*"
 msgstr ""
