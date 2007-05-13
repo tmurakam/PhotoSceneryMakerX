@@ -47,6 +47,7 @@ protected:
 	void MakeInf(void);
 	AnsiString InfFileName(void);
         void MakeInfSub(FILE *fp, int n, const char *layer, AnsiString bmpfile, Transform *trans);
+	AnsiString variationString(int v);
 
 	int ExecCmd(AnsiString cmdline, AnsiString desc);
 

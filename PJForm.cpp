@@ -40,6 +40,7 @@ TPrjForm *PrjForm;
 __fastcall TPrjForm::TPrjForm(TComponent* Owner)
 	: TForm(Owner)
 {
+	blockUpdate = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TPrjForm::FormCreate(TObject *Sender)
@@ -47,11 +48,19 @@ void __fastcall TPrjForm::FormCreate(TObject *Sender)
 	Font->Handle = GetStockObject(DEFAULT_GUI_FONT);
 }
 //---------------------------------------------------------------------------
+void __fastcall TPrjForm::FormShow(TObject *Sender)
+{
+        ComboBoxBmpNum->ItemIndex = 0;
+	ComboBoxBmpNumChange(Sender);
+}
+
+//---------------------------------------------------------------------------
 void TPrjForm::LoadData(PSMProject *proj)
 {
-	EditBmpDay->Text   = proj->BmpFile(BM_DAY);
-	EditBmpLightmap->Text = proj->BmpFile(BM_NIGHT);
-	EditBmpAlpha->Text    = proj->BmpFile(BM_ALPHA);
+	for (int i = 0; i < BM_MAX; i++) {
+        	BitmapInfo *m = proj->BmpInfo(i);
+                bmpInfo[i] = *m;
+        }
 
 	EditWidth->Text = proj->Trans->Width;
 	EditHeight->Text = proj->Trans->Height;
@@ -78,9 +87,10 @@ void TPrjForm::LoadData(PSMProject *proj)
 
 void TPrjForm::UpdateData(PSMProject *proj)
 {
-	proj->SetBmpFile(BM_DAY,   EditBmpDay->Text);
-	proj->SetBmpFile(BM_NIGHT, EditBmpLightmap->Text);
-	proj->SetBmpFile(BM_ALPHA, EditBmpAlpha->Text);
+	for (int i=0; i < BM_MAX; i++) {
+        	BitmapInfo *m = proj->BmpInfo(i);
+                *m = bmpInfo[i];
+        }
 
 	proj->Trans->Base.lat.SetStr(EditN->Text);
 	proj->Trans->Base.lon.SetStr(EditW->Text);
@@ -101,6 +111,7 @@ void TPrjForm::UpdateData(PSMProject *proj)
 
         proj->Lod = EditLOD->Text.ToInt();
 
+        proj->Packing();
 }
 
 //---------------------------------------------------------------------------
@@ -118,33 +129,8 @@ void __fastcall TPrjForm::ButtonRefOutDirClick(TObject *Sender)
 	RefFolder(EditOutDir);
 }
 
-//---------------------------------------------------------------------------
-// Select BMP file
-void TPrjForm::RefBmpFile(TEdit *edit)
-{
-	if (OpenDialog->Execute()) {
-		edit->Text = OpenDialog->FileName;
-	}
-}
 
 //---------------------------------------------------------------------------
-void __fastcall TPrjForm::ButtonRefBmpDayClick(TObject *Sender)
-{
-	RefBmpFile(EditBmpDay);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TPrjForm::ButtonRefBmpNightClick(TObject *Sender)
-{
-	RefBmpFile(EditBmpLightmap);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TPrjForm::ButtonRefBmpAlphaClick(TObject *Sender)
-{
-	RefBmpFile(EditBmpAlpha);
-}
-
 void __fastcall TPrjForm::OnCoordEditExit(TObject *Sender)
 {
 	TEdit *edit = (TEdit *)Sender;
@@ -202,8 +188,114 @@ void __fastcall TPrjForm::OnResEditExit(TObject *Sender)
 	EditXres2->Text = xres2;
 	EditYres2->Text = yres2;
 }
+
+//---------------------------------------------------------------------------
+// Select BMP file
+//---------------------------------------------------------------------------
+void __fastcall TPrjForm::ButtonRefBmpFileClick(TObject *Sender)
+{
+	if (OpenDialog->Execute()) {
+		EditBmpFile->Text = OpenDialog->FileName;
+
+                int bmpIdx = curBmpIdx();
+                bmpInfo[bmpIdx].filename = EditBmpFile->Text;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TPrjForm::ComboBoxBmpNumChange(TObject *Sender)
+{
+	blockUpdate = true;
+
+	int bmpIdx = curBmpIdx();
+	EditBmpFile->Text = bmpInfo[bmpIdx].filename;
+
+        int v = bmpInfo[bmpIdx].variation;
+
+        // uncheck month
+        CheckBoxAllMonth->Checked = false;
+        CheckBoxM1->Checked = false;
+        CheckBoxM2->Checked = false;
+        CheckBoxM3->Checked = false;
+        CheckBoxM4->Checked = false;
+        CheckBoxM5->Checked = false;
+        CheckBoxM6->Checked = false;
+        CheckBoxM7->Checked = false;
+        CheckBoxM8->Checked = false;
+        CheckBoxM9->Checked = false;
+        CheckBoxM10->Checked = false;
+        CheckBoxM11->Checked = false;
+        CheckBoxM12->Checked = false;
+
+        if (v & BV_ALL) {
+        	RadioButtonAll->Checked = true;
+        }
+        else if (v & BV_NIGHT) {
+        	RadioButtonNight->Checked = true;
+        }
+        else if (v & BV_LWMASK) {
+        	RadioButtonLWMask->Checked = true;
+	}
+        else {
+        	RadioButtonDay->Checked = true;
+	}
+
+        // month
+	if (v & BV_MONTH(0)) CheckBoxAllMonth->Checked = true;
+        if (v & BV_MONTH(1)) CheckBoxM1->Checked = true;
+        if (v & BV_MONTH(2)) CheckBoxM2->Checked = true;
+        if (v & BV_MONTH(3)) CheckBoxM3->Checked = true;
+        if (v & BV_MONTH(4)) CheckBoxM4->Checked = true;
+        if (v & BV_MONTH(5)) CheckBoxM5->Checked = true;
+        if (v & BV_MONTH(6)) CheckBoxM6->Checked = true;
+        if (v & BV_MONTH(7)) CheckBoxM7->Checked = true;
+        if (v & BV_MONTH(8)) CheckBoxM8->Checked = true;
+        if (v & BV_MONTH(9)) CheckBoxM9->Checked = true;
+        if (v & BV_MONTH(10)) CheckBoxM10->Checked = true;
+        if (v & BV_MONTH(11)) CheckBoxM11->Checked = true;
+        if (v & BV_MONTH(12)) CheckBoxM12->Checked = true;
+
+        blockUpdate = false;
+}
 //---------------------------------------------------------------------------
 
+void __fastcall TPrjForm::updateBmpInfo(TObject *Sender)
+{
+	if (blockUpdate) return;
 
+	int bmpIdx = curBmpIdx();
+	bmpInfo[bmpIdx].filename = EditBmpFile->Text;
+
+        // radio
+	int v = 0;
+	if (RadioButtonAll->Checked) {
+        	v = BV_ALL;
+        }
+	else if (RadioButtonNight->Checked) {
+        	v = BV_NIGHT;
+        }
+	else if (RadioButtonLWMask->Checked) {
+        	v = BV_LWMASK;
+        }
+        else {
+        	v = BV_DAY;
+        }
+
+	if (CheckBoxAllMonth->Checked) v |= BV_MONTH(0);
+       	if (CheckBoxM1->Checked) v |= BV_MONTH(1);
+       	if (CheckBoxM2->Checked) v |= BV_MONTH(2);
+       	if (CheckBoxM3->Checked) v |= BV_MONTH(3);
+       	if (CheckBoxM4->Checked) v |= BV_MONTH(4);
+       	if (CheckBoxM5->Checked) v |= BV_MONTH(5);
+       	if (CheckBoxM6->Checked) v |= BV_MONTH(6);
+       	if (CheckBoxM7->Checked) v |= BV_MONTH(7);
+       	if (CheckBoxM8->Checked) v |= BV_MONTH(8);
+       	if (CheckBoxM9->Checked) v |= BV_MONTH(9);
+       	if (CheckBoxM10->Checked) v |= BV_MONTH(10);
+       	if (CheckBoxM11->Checked) v |= BV_MONTH(11);
+       	if (CheckBoxM12->Checked) v |= BV_MONTH(12);
+
+        bmpInfo[bmpIdx].variation = v;
+}
+//---------------------------------------------------------------------------
 
 

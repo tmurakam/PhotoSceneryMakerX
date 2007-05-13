@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 253
   Top = 122
   Caption = 'Photo Scenery Maker for FSX'
-  ClientHeight = 482
+  ClientHeight = 503
   ClientWidth = 628
   Color = clBtnFace
   Font.Charset = SHIFTJIS_CHARSET
@@ -23,7 +23,7 @@ object MainForm: TMainForm
   TextHeight = 14
   object StatusBar: TStatusBar
     Left = 0
-    Top = 463
+    Top = 484
     Width = 628
     Height = 19
     Panels = <
@@ -38,16 +38,18 @@ object MainForm: TMainForm
         Width = 120
       end>
     SimpleText = 'Ready'
+    ExplicitTop = 463
   end
   object ScrollBox: TScrollBox
     Left = 0
     Top = 0
     Width = 628
-    Height = 463
+    Height = 484
     HorzScrollBar.Tracking = True
     VertScrollBar.Tracking = True
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 463
     object PaintBox: TPaintBox
       Left = 0
       Top = 0
@@ -94,22 +96,6 @@ object MainForm: TMainForm
       object MenuQuit: TMenuItem
         Caption = 'Quit(&Q)'
         OnClick = MenuQuitClick
-      end
-    end
-    object MenuView: TMenuItem
-      Caption = 'Vew(&V)'
-      object MenuViewDay: TMenuItem
-        Caption = 'Day'
-        Checked = True
-        OnClick = MenuViewDayClick
-      end
-      object MenuViewNight: TMenuItem
-        Caption = 'Night'
-        OnClick = MenuViewNightClick
-      end
-      object MenuViewAlpha: TMenuItem
-        Caption = 'Water(Alpha)'
-        OnClick = MenuViewAlphaClick
       end
     end
     object MenuCalibration: TMenuItem
@@ -171,13 +157,13 @@ object MainForm: TMainForm
   end
   object OpenPrjDialog: TOpenDialog
     DefaultExt = 'psm'
-    Filter = 'PSMX Project files (*.psmx)|*.psmx|All files (*.*)|*.*'
+    Filter = 'Project files (*.psmx;*.psm)|*.psmx;*psm|All files (*.*)|*.*'
     Left = 408
     Top = 16
   end
   object SavePrjDialog: TSaveDialog
     DefaultExt = 'psm'
-    Filter = 'Project files (*.psm)|*.psm|All files (*.*)|*.*'
+    Filter = 'PSMX Project files (*.psmx)|*.psmx|All files (*.*)|*.*'
     Left = 440
     Top = 24
   end

@@ -63,10 +63,6 @@ __published:	// IDE managed components
 	TMenuItem *MenuPrjProperty;
 	TMenuItem *N1;
 	TMenuItem *MenuNewPrj;
-	TMenuItem *MenuView;
-	TMenuItem *MenuViewDay;
-	TMenuItem *MenuViewNight;
-	TMenuItem *MenuViewAlpha;
 	TPaintBox *PaintBox;
 	TTimer *Timer;
 	TMenuItem *MenuManual;
@@ -95,9 +91,6 @@ __published:	// IDE managed components
 	void __fastcall MenuSCGenClick(TObject *Sender);
 	void __fastcall MenuPrjPropertyClick(TObject *Sender);
 	void __fastcall MenuNewPrjClick(TObject *Sender);
-	void __fastcall MenuViewDayClick(TObject *Sender);
-	void __fastcall MenuViewNightClick(TObject *Sender);
-	void __fastcall MenuViewAlphaClick(TObject *Sender);
 	void __fastcall PaintBoxPaint(TObject *Sender);
 	void __fastcall OnTimer(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
@@ -131,7 +124,6 @@ private:	// User decl.
 
 	//Graphics::TBitmap	*bitmap;
 	TBitmap2	*bitmap;	
-	int curBmpIdx;
         bool isTranslated;
 
 	bool CheckSave(void);
@@ -149,7 +141,7 @@ public:		// User decl.
 
 protected:
 	void StartCpSpecify(int cp);
-	void ChangeBmp(int bmpidx, bool reload = false);
+	void ChangeBmp(void);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TMainForm *MainForm;

@@ -86,6 +86,54 @@ AnsiString SCGenThread::InfFileName(void)
 	return path;
 }
 
+AnsiString SCGenThread::variationString(int v)
+{
+	const char *monthString[12] = {
+        	"January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+        };
+        
+	if (v & BV_ALL) {
+                return "All";
+        }
+        if (v & BV_LWMASK) {
+                return "";
+        }
+        if (v & BV_NIGHT) {
+                return "Night";
+        }
+        if (v & BV_MONTH(0)) {
+        	return "Day";
+        }
+
+        // month
+        AnsiString vv = "";
+
+	bool isFirst = true;
+        for (int i = 1; i <= 12; i++) {
+        	if (v & BV_MONTH(i)) {
+                	if (!isFirst) {
+                                vv += ",";
+                        }
+                        isFirst = false;
+
+                        vv += monthString[i-1];
+                }
+        }
+        return vv;
+
+}
+
 // Create one inf file
 void SCGenThread::MakeInf(void)
 {
@@ -97,22 +145,12 @@ void SCGenThread::MakeInf(void)
 
         AnsiString inf = InfFileName();
 
-	AnsiString BmpFile = Proj->BmpFile();
-	if (BmpFile.IsEmpty()) {
+        int nSource = Proj->numBmp();
+	if (nSource <= 0) {
 		return;
 	}
 
-        int nSource = 1;
-        int nNight = -1;
-        int nAlpha = -1;
-        if (Proj->HasNight) {
-            nSource++;
-            nNight = nSource;
-	}
-        if (Proj->HasAlpha) {
-            nSource++;
-            nAlpha = nSource;
-        }
+        int nLWmask = Proj->lwmaskIdx();
 
 	// Open inf file
 	FILE *fp;
@@ -132,36 +170,40 @@ void SCGenThread::MakeInf(void)
 	        fprintf(fp, "Type = MultiSource\n");
 	        fprintf(fp, "NumberOfSources = %d\n", nSource);
 	        fprintf(fp, "\n");
-
-		MakeInfSub(fp, 1, "Imagery", Proj->BmpFile(BM_DAY), trans);
-
-	        if (Proj->HasAlpha) {
-	        	fprintf(fp, "Channel_LandWaterMask = %d.0\n", nAlpha);
-	        }
-	} else {
-		MakeInfSub(fp, 0, "Imagery", Proj->BmpFile(BM_DAY), trans);
-        }
-	fprintf(fp, "Variation = Day\n");
-        fprintf(fp, "\n");
-
-        // set night bitmap section
-        if (nNight > 0) {
-	        MakeInfSub(fp, nNight, "Imagery", Proj->BmpFile(BM_NIGHT), trans);
-	        if (Proj->HasAlpha) {
-	        	fprintf(fp, "Channel_LandWaterMask = %d.0\n", nAlpha);
-	        }
-	        fprintf(fp, "\n");
         }
 
-        // alpha channel (land water mask)
-        if (nAlpha > 0) {
-	        MakeInfSub(fp, nAlpha, "None", Proj->BmpFile(BM_ALPHA), trans);
-		fprintf(fp, "Variation = Night\n");
-	        if (Proj->HasAlpha) {
-	        	fprintf(fp, "Channel_LandWaterMask = %d.0\n", nAlpha);
+        for (int i=0; i < nSource; i++) {
+        	BitmapInfo *m;
+                m = Proj->BmpInfo(i);
+
+		if (nSource >= 2) {
+			fprintf(fp, "[Source%d]\n", i+1);
+	        } else {
+		        fprintf(fp, "[Source]\n");
 	        }
-	        fprintf(fp, "\n");
-        }
+		fprintf(fp, "Type = BMP\n");
+                if (m->variation & BV_LWMASK) {
+			fprintf(fp, "Layer = None\n");
+                } else {
+			fprintf(fp, "Layer = Imagery\n");
+                }
+		fprintf(fp, "SourceDir = \"%s\"\n", ExtractFileDir(m->filename).c_str());
+		fprintf(fp, "SourceFile = \"%s\"\n", ExtractFileName(m->filename).c_str());
+		fprintf(fp, "ULXMAP = %.24f\n", trans->Base.lon.deg);
+		fprintf(fp, "ULYMAP = %.24f\n", trans->Base.lat.deg);
+		fprintf(fp, "XDIM = %.24f\n", trans->Resolution.x);
+		fprintf(fp, "YDIM = %.24f\n", trans->Resolution.y);
+		fprintf(fp, "SamplingMethod=Gaussian\n");
+
+	        if (nLWmask > 0 && (m->variation & BV_LWMASK) == 0) {
+	        	fprintf(fp, "Channel_LandWaterMask = %d.0\n", nLWmask+1);
+	        }
+        	AnsiString var = variationString(m->variation);
+                if (!var.IsEmpty()) {
+			fprintf(fp, "Variation = %s\n", variationString(m->variation));
+                }
+        	fprintf(fp, "\n");
+	}
 
 	// Build Destination section
 	fprintf(fp, "[Destination]\n");

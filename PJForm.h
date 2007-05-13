@@ -46,15 +46,9 @@ __published:	// IDE managed components
 	TPanel *Panel1;
 	TButton *Button1;
 	TButton *Button2;
-	TEdit *EditBmpDay;
+	TEdit *EditBmpFile;
 	TLabel *Label1;
-	TLabel *Label6;
-	TLabel *Label7;
-	TEdit *EditBmpLightmap;
-	TEdit *EditBmpAlpha;
 	TButton *ButtonRefBmpSummer;
-	TButton *ButtonRefBmpLightmap;
-	TButton *ButtonRefBmpAlpha;
 	TLabel *Label8;
 	TLabel *Label9;
 	TEdit *EditOutDir;
@@ -100,15 +94,40 @@ __published:	// IDE managed components
 	TLabel *Label3;
 	TEdit *EditLOD;
 	TLabel *Label4;
+	TLabel *Label5;
+	TComboBox *ComboBoxBmpNum;
+	TGroupBox *GroupBox4;
+	TRadioButton *RadioButtonAll;
+	TRadioButton *RadioButtonDay;
+	TRadioButton *RadioButtonNight;
+	TRadioButton *RadioButtonLWMask;
+	TLabel *Label6;
+	TCheckBox *CheckBoxAllMonth;
+	TCheckBox *CheckBoxM1;
+	TCheckBox *CheckBoxM2;
+	TCheckBox *CheckBoxM3;
+	TCheckBox *CheckBoxM4;
+	TCheckBox *CheckBoxM5;
+	TCheckBox *CheckBoxM6;
+	TCheckBox *CheckBoxM7;
+	TCheckBox *CheckBoxM8;
+	TCheckBox *CheckBoxM9;
+	TCheckBox *CheckBoxM10;
+	TCheckBox *CheckBoxM11;
+	TCheckBox *CheckBoxM12;
 	void __fastcall ButtonRefOutDirClick(TObject *Sender);
-	void __fastcall ButtonRefBmpDayClick(TObject *Sender);
-	void __fastcall ButtonRefBmpNightClick(TObject *Sender);
-	void __fastcall ButtonRefBmpAlphaClick(TObject *Sender);
+	void __fastcall ButtonRefBmpFileClick(TObject *Sender);
 	void __fastcall OnCoordEditExit(TObject *Sender);
 	void __fastcall OnResEditExit(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall ComboBoxBmpNumChange(TObject *Sender);
+	void __fastcall updateBmpInfo(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
 
 private:	// User decl.
+	BitmapInfo bmpInfo[BM_MAX];
+        bool blockUpdate;
+
 public:		// User decl.
 	__fastcall TPrjForm(TComponent* Owner);
 
@@ -117,6 +136,17 @@ public:		// User decl.
 
 	void RefFolder(TEdit *edit);
 	void RefBmpFile(TEdit *edit);
+        int curBmpIdx(void) {
+        	if (ComboBoxBmpNum->ItemIndex < 0) {
+                	ComboBoxBmpNum->ItemIndex = 0;
+		}
+        	try {
+                	return ComboBoxBmpNum->Text.ToInt() - 1;
+                }
+                catch(...) {
+                        return 0;
+                }
+	}
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TPrjForm *PrjForm;

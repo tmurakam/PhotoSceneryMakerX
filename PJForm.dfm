@@ -14,6 +14,7 @@ object PrjForm: TPrjForm
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
   object PageControl1: TPageControl
@@ -26,74 +27,235 @@ object PrjForm: TPrjForm
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Bitmaps'
+      ExplicitLeft = 8
+      ExplicitTop = 23
       object Label1: TLabel
         Left = 16
-        Top = 36
-        Width = 61
+        Top = 60
+        Width = 56
         Height = 14
-        Caption = 'Day bitmap'
+        Caption = 'Bitmap file'
       end
-      object Label6: TLabel
+      object Label5: TLabel
         Left = 16
-        Top = 67
-        Width = 70
+        Top = 16
+        Width = 83
         Height = 14
-        Caption = 'Night bitmap'
+        Caption = 'Bitmap number'
       end
-      object Label7: TLabel
-        Left = 16
-        Top = 99
-        Width = 72
-        Height = 14
-        Caption = 'Water(alpha)'
-      end
-      object EditBmpDay: TEdit
-        Left = 104
-        Top = 32
+      object EditBmpFile: TEdit
+        Left = 105
+        Top = 57
         Width = 329
         Height = 22
         TabOrder = 0
-      end
-      object EditBmpLightmap: TEdit
-        Left = 104
-        Top = 63
-        Width = 329
-        Height = 22
-        TabOrder = 2
-      end
-      object EditBmpAlpha: TEdit
-        Left = 104
-        Top = 95
-        Width = 329
-        Height = 22
-        TabOrder = 4
+        OnChange = updateBmpInfo
       end
       object ButtonRefBmpSummer: TButton
         Left = 440
-        Top = 32
+        Top = 56
         Width = 25
         Height = 25
         Caption = '...'
         TabOrder = 1
-        OnClick = ButtonRefBmpDayClick
+        OnClick = ButtonRefBmpFileClick
       end
-      object ButtonRefBmpLightmap: TButton
-        Left = 440
-        Top = 63
-        Width = 25
-        Height = 25
-        Caption = '...'
+      object ComboBoxBmpNum: TComboBox
+        Left = 105
+        Top = 13
+        Width = 48
+        Height = 22
+        Style = csDropDownList
+        DropDownCount = 14
+        ItemHeight = 14
+        ItemIndex = 0
+        TabOrder = 2
+        Text = '1'
+        OnChange = ComboBoxBmpNumChange
+        Items.Strings = (
+          '1'
+          '2'
+          '3'
+          '4'
+          '5'
+          '6'
+          '7'
+          '8'
+          '9'
+          '10'
+          '11'
+          '12'
+          '13'
+          '14')
+      end
+      object GroupBox4: TGroupBox
+        Left = 16
+        Top = 104
+        Width = 449
+        Height = 249
+        Caption = 'Variation'
         TabOrder = 3
-        OnClick = ButtonRefBmpNightClick
-      end
-      object ButtonRefBmpAlpha: TButton
-        Left = 440
-        Top = 95
-        Width = 25
-        Height = 25
-        Caption = '...'
-        TabOrder = 5
-        OnClick = ButtonRefBmpAlphaClick
+        object Label6: TLabel
+          Left = 16
+          Top = 128
+          Width = 150
+          Height = 14
+          Caption = 'Month (valid for '#39'Day'#39' type)'
+        end
+        object RadioButtonAll: TRadioButton
+          Left = 16
+          Top = 24
+          Width = 113
+          Height = 17
+          Caption = 'All (Day/Night)'
+          Checked = True
+          TabOrder = 0
+          TabStop = True
+          OnClick = updateBmpInfo
+        end
+        object RadioButtonDay: TRadioButton
+          Left = 16
+          Top = 47
+          Width = 113
+          Height = 17
+          Caption = 'Day'
+          TabOrder = 1
+          OnClick = updateBmpInfo
+        end
+        object RadioButtonNight: TRadioButton
+          Left = 16
+          Top = 70
+          Width = 113
+          Height = 17
+          Caption = 'Night'
+          TabOrder = 2
+          OnClick = updateBmpInfo
+        end
+        object RadioButtonLWMask: TRadioButton
+          Left = 16
+          Top = 93
+          Width = 113
+          Height = 17
+          Caption = 'Land/Water mask'
+          TabOrder = 3
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxAllMonth: TCheckBox
+          Left = 16
+          Top = 148
+          Width = 97
+          Height = 17
+          Caption = 'All month'
+          TabOrder = 4
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM1: TCheckBox
+          Left = 16
+          Top = 171
+          Width = 57
+          Height = 17
+          Caption = 'Jan.'
+          TabOrder = 5
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM2: TCheckBox
+          Left = 70
+          Top = 171
+          Width = 58
+          Height = 17
+          Caption = 'Feb.'
+          TabOrder = 6
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM3: TCheckBox
+          Left = 124
+          Top = 171
+          Width = 50
+          Height = 17
+          Caption = 'Mar.'
+          TabOrder = 7
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM4: TCheckBox
+          Left = 178
+          Top = 171
+          Width = 97
+          Height = 17
+          Caption = 'Apr.'
+          TabOrder = 8
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM5: TCheckBox
+          Left = 232
+          Top = 171
+          Width = 97
+          Height = 17
+          Caption = 'May'
+          TabOrder = 9
+        end
+        object CheckBoxM6: TCheckBox
+          Left = 286
+          Top = 171
+          Width = 97
+          Height = 17
+          Caption = 'Jun.'
+          TabOrder = 10
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM7: TCheckBox
+          Left = 16
+          Top = 194
+          Width = 57
+          Height = 17
+          Caption = 'Jul.'
+          TabOrder = 11
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM8: TCheckBox
+          Left = 70
+          Top = 194
+          Width = 50
+          Height = 17
+          Caption = 'Aug.'
+          TabOrder = 12
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM9: TCheckBox
+          Left = 124
+          Top = 194
+          Width = 50
+          Height = 17
+          Caption = 'Sep.'
+          TabOrder = 13
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM10: TCheckBox
+          Left = 178
+          Top = 194
+          Width = 50
+          Height = 17
+          Caption = 'Oct.'
+          TabOrder = 14
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM11: TCheckBox
+          Left = 232
+          Top = 194
+          Width = 56
+          Height = 17
+          Caption = 'Nov.'
+          TabOrder = 15
+          OnClick = updateBmpInfo
+        end
+        object CheckBoxM12: TCheckBox
+          Left = 286
+          Top = 194
+          Width = 97
+          Height = 17
+          Caption = 'Dec.'
+          TabOrder = 16
+          OnClick = updateBmpInfo
+        end
       end
     end
     object TabSheet2: TTabSheet

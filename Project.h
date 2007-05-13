@@ -28,13 +28,23 @@
 #include "Transform.h"
 
 //---------------------------------------------------------------------------
-// Season def.
+// BMP def.
 
-enum {
-	BM_DAY = 0,
-	BM_NIGHT,
-	BM_ALPHA,
-	BM_MAX
+
+// variations
+#define	BV_ALL		0x1 		// day and night
+#define	BV_DAY		0x2		// day (all month)
+#define	BV_NIGHT	0x4		// night
+#define	BV_LWMASK	0x8		// land/water mask
+#define	BV_MONTH(n)	(0x10 << (n))	// month (1-12, 0=all month)
+
+#define	BM_MAX		14
+
+class BitmapInfo
+{
+public:
+        AnsiString	filename;
+        int		variation;
 };
 
 //---------------------------------------------------------------------------
@@ -46,9 +56,7 @@ private:
 	bool modified;
 
 	// Source information
-	AnsiString BmpFiles[BM_MAX];
-	AnsiString BmpKey[BM_MAX];
-	//bool hasSeason;
+        BitmapInfo bmpInfo[BM_MAX];
 
 	// Transform information
 	Transform trans;
@@ -67,8 +75,8 @@ private:
 	void writeBaseFile(const AnsiString &b)	{ basefile = b; modified = true; }
         void writeLod(int x) { lod = x; modified = true; }
 
-        bool hasNight(void)		{ return !BmpFiles[BM_NIGHT].IsEmpty(); }
-	bool hasAlpha(void)		{ return !BmpFiles[BM_ALPHA].IsEmpty(); }
+	//        bool hasNight(void)		{ return !BmpFiles[BM_NIGHT].IsEmpty(); }
+	//	bool hasAlpha(void)		{ return !BmpFiles[BM_ALPHA].IsEmpty(); }
 
 public:
 	PSMProject();
@@ -76,14 +84,21 @@ public:
 	void LoadFromFile(AnsiString file);
 	bool SaveToFile(AnsiString file = "");
 
-	AnsiString BmpFile(int idx = BM_DAY)	{ return BmpFiles[idx]; }
-	void SetBmpFile(int idx, const AnsiString &b)	{ BmpFiles[idx] = b; modified = true; }
+	BitmapInfo *BmpInfo(int n) { return &bmpInfo[n]; }
+        void setBmpInfo(BitmapInfo *m, int n) { bmpInfo[n] = *m; modified = true; }
 
+	void Packing(void);
+        
+        AnsiString MainBmpFile(void) { return bmpInfo[0].filename; }
+        
+	int numBmp(void);
+        int lwmaskIdx(void);
+        
 	__property bool Modified = {read=modified, write=modified};
 	__property Transform * Trans = {read=readTransform};
 
-	__property bool HasNight = {read=hasNight};
-	__property bool HasAlpha = {read=hasAlpha};
+//	__property bool HasNight = {read=hasNight};
+//	__property bool HasAlpha = {read=hasAlpha};
 	__property AnsiString OutDir = {read=outdir, write=writeOutDir};
 	__property AnsiString BaseFile = {read=basefile, write=writeBaseFile};
         __property int Lod = { read=lod, write=writeLod};

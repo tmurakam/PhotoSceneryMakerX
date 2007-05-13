@@ -56,7 +56,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         isTranslated = false;
 
 	bitmap = NULL;
-	curBmpIdx = BM_DAY;
 }
 
 //---------------------------------------------------------------------------
@@ -106,7 +105,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 	if (ParamCount() > 0) {
 		proj = new PSMProject;
 		proj->LoadFromFile(ParamStr(1));
-		ChangeBmp(curBmpIdx, true);
+		ChangeBmp();
 	}
 }
 
@@ -212,7 +211,7 @@ void __fastcall TMainForm::MenuOpenPrjClick(TObject *Sender)
 	proj = newproj;
 
 	// Reload BMP file
-	ChangeBmp(curBmpIdx, true);
+	ChangeBmp();
 }
 //---------------------------------------------------------------------------
 // Save project
@@ -260,7 +259,7 @@ void __fastcall TMainForm::MenuPrjPropertyClick(TObject *Sender)
 	PrjForm->LoadData(proj);
 	if (PrjForm->ShowModal() == mrOk) {
 		PrjForm->UpdateData(proj);
-		ChangeBmp(curBmpIdx, true);
+		ChangeBmp();
 		UpdateMenu();
 	}
 
@@ -274,16 +273,11 @@ void TMainForm::UpdateMenu(void)
 	MenuPrjSaveAs->Enabled = false;
 	MenuSCGen->Enabled = false;
 	MenuPrjProperty->Enabled = false;
-	MenuView->Enabled = false;
 	MenuCalibration->Enabled = false;
 
 	if (!proj) return;
 
 	MenuPrjProperty->Enabled = true;
-	MenuView->Enabled = true;
-	MenuViewDay->Checked   = (curBmpIdx == BM_DAY);
-	MenuViewNight->Checked = (curBmpIdx == BM_NIGHT);
-	MenuViewAlpha->Checked    = (curBmpIdx == BM_ALPHA);
 
 	if (!isCpSpecifing) {
 		MenuCalibration->Enabled = true;
@@ -549,22 +543,20 @@ void TMainForm::SetProgress(int perc)
 	StatusBar->Panels->Items[0]->Text = tmp;
 }
 //---------------------------------------------------------------------------
-// Switch seasonal bitmaps
-void TMainForm::ChangeBmp(int bmpidx, bool reload)
+// load bitmap
+void TMainForm::ChangeBmp(void)
 {
 	TCursor saveCursor = Screen->Cursor;
 	Screen->Cursor = crHourGlass;
 
 	try {
-		curBmpIdx = bmpidx;
-
 		if (bitmap) {
 			delete bitmap;
 		}
 		bitmap = //new Graphics::TBitmap;
 		  new TBitmap2;
 		try {
-			bitmap->LoadFromFile(proj->BmpFile(curBmpIdx));
+			bitmap->LoadFromFile(proj->MainBmpFile());
 
 			proj->Trans->Width = bitmap->Width;
 			proj->Trans->Height = bitmap->Height;
@@ -655,24 +647,6 @@ void __fastcall TMainForm::PaintBoxPaint(TObject *Sender)
 	}
 }	
 
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::MenuViewDayClick(TObject *Sender)
-{
-	ChangeBmp(BM_DAY);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::MenuViewNightClick(TObject *Sender)
-{
-	ChangeBmp(BM_NIGHT);
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TMainForm::MenuViewAlphaClick(TObject *Sender)
-{
-	ChangeBmp(BM_ALPHA);
-}
 //---------------------------------------------------------------------------
 
 

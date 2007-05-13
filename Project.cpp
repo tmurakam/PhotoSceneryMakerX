@@ -32,11 +32,33 @@ PSMProject::PSMProject()
 {
 	modified = false;
 
-	BmpKey[BM_DAY]   = "BMPDay";
-	BmpKey[BM_NIGHT]    = "BMPNight";
-	BmpKey[BM_ALPHA]    = "BMPAlpha";
+	for (int i = 0; i < BM_MAX; i++) {
+		bmpInfo[i].filename = "";
+                bmpInfo[i].variation = -1;
+        }
 
         lod = -1;	// default
+}
+
+int PSMProject::numBmp(void)
+{
+	int nbmp = 0;
+        for (int i=0; i <= BM_MAX; i++) {
+        	if (!bmpInfo[i].filename.IsEmpty()) {
+                	nbmp++;
+                }
+        }
+        return nbmp;
+}
+
+int PSMProject::lwmaskIdx(void)
+{
+        for (int i=0; i <= BM_MAX; i++) {
+                if (bmpInfo[i].variation & BV_LWMASK) {
+                      return i;
+                }
+        }
+        return -1;
 }
 
 void PSMProject::LoadFromFile(AnsiString prjfile)
@@ -46,12 +68,16 @@ void PSMProject::LoadFromFile(AnsiString prjfile)
 	TIniFile *ini = new TIniFile(prjpath);
 
 	for (int i = 0; i < BM_MAX; i++) {
-		BmpFiles[i] = ini->ReadString("Source", BmpKey[i], "");
+        	AnsiString key;
+                key.sprintf("Bitmap%d", i);
+                bmpInfo[i].filename = ini->ReadString("Source", key, "");
+                key.sprintf("BitmapVariation%d", i);
+                bmpInfo[i].variation = ini->ReadInteger("Source", key, BV_ALL);
 	}
 
         // For backward compatibility
-        if (BmpFiles[BM_DAY].IsEmpty()) {
-        	BmpFiles[BM_DAY] = ini->ReadString("Source", "BMSummer", "");
+        if (bmpInfo[0].filename.IsEmpty()) {
+		bmpInfo[0].filename = ini->ReadString("Source", "BMPSummer", "");
 	}
 
 	trans.Width  = ini->ReadInteger("Source", "Width",  -1);
@@ -80,6 +106,7 @@ void PSMProject::LoadFromFile(AnsiString prjfile)
 	delete(ini);
 
 	modified = false;
+        Packing();
 }
 
 bool PSMProject::SaveToFile(AnsiString prjfile)
@@ -93,7 +120,12 @@ bool PSMProject::SaveToFile(AnsiString prjfile)
 
 	TIniFile *ini = new TIniFile(prjpath);
 	for (int i = 0; i < BM_MAX; i++) {
-		ini->WriteString("Source", BmpKey[i], BmpFiles[i]);
+        	AnsiString key;
+                key.sprintf("Bitmap%d", i);
+		ini->WriteString("Source", key, bmpInfo[i].filename);
+                key.sprintf("BitmapVariation%d", i);
+                ini->WriteInteger("Source", key, bmpInfo[i].variation);
+
 	}
 
 	ini->WriteInteger("Source", "Width", trans.Width);
@@ -123,5 +155,15 @@ bool PSMProject::SaveToFile(AnsiString prjfile)
 
 	return true;
 }
-	
+
+void PSMProject::Packing(void)
+{
+	for (int i=0; i < BM_MAX - 1; i++) {
+        	if (bmpInfo[i].filename.IsEmpty()) {
+                      for (int j = i; j < BM_MAX - 1; j++) {
+                      	bmpInfo[j] = bmpInfo[j+1];
+                      }
+                }
+        }
+}
 #pragma package(smart_init)
