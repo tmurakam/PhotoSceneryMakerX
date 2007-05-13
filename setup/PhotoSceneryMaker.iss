@@ -10,19 +10,21 @@ AppSupportURL=http://scenerytools.sourceforge.net
 AppUpdatesURL=http://scenerytools.sourceforge.net
 DefaultDirName={pf}\Photo Scenery Maker for FSX
 DefaultGroupName=Photo Scenery Maker for FSX
-LicenseFile=D:\dev\scenerytools\PhotoSceneryMakerX\setup\license.txt
+OutputBaseFilename=setup
+Compression=lzma
+SolidCompression=yes
 ShowLanguageDialog=yes
+LicenseFile=D:\dev\scenerytools\PhotoSceneryMakerX\setup\license.txt
 
 [Languages]
-Name: "en"; MessagesFile: "compiler:Default.isl"
-Name: "jp"; MessagesFile: "compiler:Japanese.isl"
+Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"
 
 [Tasks]
-; NOTE: The following entry contains English phrases ("Create a desktop icon" and "Additional icons"). You are free to translate them into another language if required.
-Name: "desktopicon"; Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\PhotoSceneryMaker.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\PhotoSceneryMakerX.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\default.po"; DestDir: "{app}"; Flags: ignoreversion
 Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\doc\*.html"; DestDir: "{app}\doc"; Flags: ignoreversion
 Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\doc\*.png"; DestDir: "{app}\doc"; Flags: ignoreversion
@@ -32,11 +34,11 @@ Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\locale\ja_JP\LC_MESSAGES\default
 
 [Icons]
 Name: "{group}\Photo Scenery Maker for FSX"; Filename: "{app}\PhotoSceneryMakerX.exe"
+Name: "{group}\{cm:UninstallProgram,Photo Scenery Maker for FSX}"; Filename: "{uninstallexe}"
 Name: "{userdesktop}\Photo Scenery Maker for FSX"; Filename: "{app}\PhotoSceneryMakerX.exe"; Tasks: desktopicon
 
 [Run]
-; NOTE: The following entry contains an English phrase ("Launch"). You are free to translate it into another language if required.
-Filename: "{app}\PhotoSceneryMakerX.exe"; Description: "Launch Photo Scenery Maker for FSX"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\PhotoSceneryMakerX.exe"; Description: "{cm:LaunchProgram,Photo Scenery Maker for FSX}"; Flags: nowait postinstall skipifsilent
 
 [Registry]
 Root: HKCR; Subkey: ".psmx"; ValueType: string; ValueName: ""; ValueData: "PhotoSceneryMakerXProject"; Flags: uninsdeletevalue 
