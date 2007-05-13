@@ -38,7 +38,6 @@ object MainForm: TMainForm
         Width = 120
       end>
     SimpleText = 'Ready'
-    ExplicitTop = 463
   end
   object ScrollBox: TScrollBox
     Left = 0
@@ -49,7 +48,6 @@ object MainForm: TMainForm
     VertScrollBar.Tracking = True
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 463
     object PaintBox: TPaintBox
       Left = 0
       Top = 0

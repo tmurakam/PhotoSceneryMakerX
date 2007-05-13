@@ -165,7 +165,7 @@ void __fastcall TBitmap2::Draw(TCanvas *canvas, const TRect &rect)
 		canvas_y = height - y - hh;
 
 		SelectObject(hDC, hBitmaps[i]);
-		int ret = BitBlt(canvas->Handle,
+		BitBlt(canvas->Handle,
 				 rect.Left, rect.Top + canvas_y,
 				 rect.Width(), hh,
 				 hDC,

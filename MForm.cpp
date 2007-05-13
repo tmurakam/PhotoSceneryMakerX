@@ -44,7 +44,7 @@ TMainForm *MainForm;
 //
 // Constructor
 //
-const int crMove = 5;
+#define crMove 	5
 
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 	: TForm(Owner)

@@ -29,6 +29,8 @@ object PrjForm: TPrjForm
       Caption = 'Bitmaps'
       ExplicitLeft = 8
       ExplicitTop = 23
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label1: TLabel
         Left = 16
         Top = 60
@@ -261,6 +263,10 @@ object PrjForm: TPrjForm
     object TabSheet2: TTabSheet
       Caption = 'Coordinates'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox1: TGroupBox
         Left = 8
         Top = 8
@@ -439,6 +445,10 @@ object PrjForm: TPrjForm
     object TabSheet3: TTabSheet
       Caption = 'Output'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label2: TLabel
         Left = 32
         Top = 336

@@ -266,7 +266,7 @@ void __fastcall TPrjForm::updateBmpInfo(TObject *Sender)
 	bmpInfo[bmpIdx].filename = EditBmpFile->Text;
 
         // radio
-	int v = 0;
+	int v;
 	if (RadioButtonAll->Checked) {
         	v = BV_ALL;
         }
