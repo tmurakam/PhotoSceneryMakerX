@@ -10,7 +10,7 @@
 	</PersonalityInfo>
 	<CPlusPlusBuilder.Personality>
 		<Source>
-			<Source Name="MainSource">PhotoSceneryMaker.cpp</Source>
+			<Source Name="MainSource">PhotoSceneryMakerX.cpp</Source>
 		</Source>
 		<BCBPROJECT>
       <project version="10.0">
@@ -29,7 +29,7 @@
         <property category="build.config.1" name="type" value="Toolset"/>
         <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
         <property category="build.node" name="libraries" value="rtl.lib vcl.lib"/>
-        <property category="build.node" name="name" value="PhotoSceneryMaker.exe"/>
+        <property category="build.node" name="name" value="PhotoSceneryMakerX.exe"/>
         <property category="build.node" name="packages" value="vcl;rtl;vclx"/>
         <property category="build.node" name="sparelibs" value="vcl.lib rtl.lib"/>
         <property category="build.node" name="use_packages" value="0"/>
@@ -199,14 +199,14 @@
         </optionset>
       </project>
       <FILELIST>
-        <FILE FILENAME="PhotoSceneryMaker.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PhotoSceneryMaker" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="PhotoSceneryMakerX.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PhotoSceneryMakerX" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="AboutDlg.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="AboutDlg" FORMNAME="AboutDialog" DESIGNCLASS="" ADDITIONAL="AboutDlg.h"/>
         <FILE FILENAME="Bitmap.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Bitmap" FORMNAME="" DESIGNCLASS="" ADDITIONAL="Bitmap.h"/>
         <FILE FILENAME="latlon.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="latlon" FORMNAME="" DESIGNCLASS="" ADDITIONAL="latlon.h"/>
         <FILE FILENAME="LLDlg.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="LLDlg" FORMNAME="LatLonDlg" DESIGNCLASS="" ADDITIONAL="LLDlg.h"/>
         <FILE FILENAME="MForm.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="MForm" FORMNAME="MainForm" DESIGNCLASS="" ADDITIONAL="MForm.h"/>
         <FILE FILENAME="OptDlg.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="OptDlg" FORMNAME="OptionDlg" DESIGNCLASS="" ADDITIONAL="OptDlg.h"/>
-        <FILE FILENAME="PhotoSceneryMaker.bdsproj" CONTAINERID="" LOCALCOMMAND="" UNITNAME="" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="PhotoSceneryMaker.bdsproj" CONTAINERID="" LOCALCOMMAND="" UNITNAME="PhotoSceneryMakerX" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="PJForm.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PJForm" FORMNAME="PrjForm" DESIGNCLASS="" ADDITIONAL="PJForm.h"/>
         <FILE FILENAME="Project.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Project" FORMNAME="" DESIGNCLASS="" ADDITIONAL="Project.h"/>
         <FILE FILENAME="SCGenFrm.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="SCGenFrm" FORMNAME="SCGenForm" DESIGNCLASS="" ADDITIONAL="SCGenFrm.h"/>
@@ -214,7 +214,7 @@
         <FILE FILENAME="Transform.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Transform" FORMNAME="" DESIGNCLASS="" ADDITIONAL="Transform.h"/>
         <FILE FILENAME="Util.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Util" FORMNAME="" DESIGNCLASS="" ADDITIONAL="Util.h"/>
         <FILE FILENAME="gnugettext.pas" CONTAINERID="PascalCompiler" LOCALCOMMAND="" UNITNAME="gnugettext" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="PhotoSceneryMaker.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="PhotoSceneryMakerX.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="PhotoSceneryMakerX.res" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="cursor.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="cursor" FORMNAME="" DESIGNCLASS=""/>
       </FILELIST>
       <IDEOPTIONS>
