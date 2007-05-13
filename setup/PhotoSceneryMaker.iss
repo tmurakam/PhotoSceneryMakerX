@@ -11,7 +11,6 @@ AppUpdatesURL=http://scenerytools.sourceforge.net
 DefaultDirName={pf}\Photo Scenery Maker for FSX
 DefaultGroupName=Photo Scenery Maker for FSX
 LicenseFile=D:\dev\scenerytools\PhotoSceneryMakerX\setup\license.txt
-DetectLanguageUsingLocale=yes
 ShowLanguageDialog=yes
 
 [Languages]
