@@ -24,7 +24,7 @@ Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\PhotoSceneryMakerX.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\Release_Build\PhotoSceneryMakerX.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\default.po"; DestDir: "{app}"; Flags: ignoreversion
 Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\doc\*.html"; DestDir: "{app}\doc"; Flags: ignoreversion
 Source: "d:\dev\SceneryTools\PhotoSceneryMakerX\doc\*.png"; DestDir: "{app}\doc"; Flags: ignoreversion
