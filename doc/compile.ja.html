@@ -14,16 +14,12 @@
 <img src="ScGenForm.ja.png">
 <p>
 
-シーナリの生成は５つのステップに分かれています。
+シーナリの生成は２つのステップに分かれています。
 
 <ol>
 <li>inf ファイルの生成。このステップは、Terrain SDK の resample.exe に入力するための
 inf ファイルを生成します。
-<li>Terrain SDK の resample.exe 実行。このステップで、ビットマップファイルの分割と tmf ファイルの生成が行われます。
-<li>アルファテクスチャのマージ。このステップでは、通常テクスチャとアルファテクスチャを
-Targa (.tga) 形式のファイルにマージします。
-<li>テクスチャ変換。このステップでは、Imagetool ユーティリティを使って、Targa ファイルを Flight Simulator が利用する bmp ファイルに変換します。
-<li>BGL ファイルの生成。Terrain SDK を使って、tmf ファイルの圧縮と BGL ファイルへの変換処理を行います。
+<li>Terrain SDK の resample.exe 実行。このステップで、シーナリ(BGLファイル)が生成されます。
 </ol>
 
 通常は「全実行」を使用してください。上記の全てのステップが全て実行されます。
