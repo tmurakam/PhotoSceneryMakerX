@@ -45,6 +45,14 @@ class BitmapInfo
 public:
         AnsiString	filename;
         int		variation;
+
+public:
+	bool isValid(void) {
+        	if (filename.IsEmpty()) {
+                        return false;
+                }
+                return true;
+        }
 };
 
 //---------------------------------------------------------------------------

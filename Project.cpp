@@ -44,7 +44,7 @@ int PSMProject::numBmp(void)
 {
 	int nbmp = 0;
         for (int i=0; i <= BM_MAX; i++) {
-        	if (!bmpInfo[i].filename.IsEmpty()) {
+        	if (bmpInfo[i].isValid()) {
                 	nbmp++;
                 }
         }
@@ -54,7 +54,8 @@ int PSMProject::numBmp(void)
 int PSMProject::lwmaskIdx(void)
 {
         for (int i=0; i <= BM_MAX; i++) {
-                if (bmpInfo[i].variation & BV_LWMASK) {
+                if (bmpInfo[i].isValid() &&
+                     bmpInfo[i].variation & BV_LWMASK) {
                       return i;
                 }
         }
@@ -159,7 +160,8 @@ bool PSMProject::SaveToFile(AnsiString prjfile)
 void PSMProject::Packing(void)
 {
 	for (int i=0; i < BM_MAX - 1; i++) {
-        	if (bmpInfo[i].filename.IsEmpty()) {
+		bmpInfo[i].filename = bmpInfo[i].filename.Trim();
+        	if (!bmpInfo[i].isValid()) {
                       for (int j = i; j < BM_MAX - 1; j++) {
                       	bmpInfo[j] = bmpInfo[j+1];
                       }

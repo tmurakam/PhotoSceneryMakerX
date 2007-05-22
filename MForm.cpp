@@ -553,6 +553,11 @@ void TMainForm::ChangeBmp(void)
 		if (bitmap) {
 			delete bitmap;
 		}
+
+                if (proj->MainBmpFile().IsEmpty()) {
+                        return;
+                }
+
 		bitmap = //new Graphics::TBitmap;
 		  new TBitmap2;
 		try {
@@ -623,8 +628,8 @@ void __fastcall TMainForm::PaintBoxPaint(TObject *Sender)
 
 	// Longitude line
 	const double lonbound = 120.0 / 8192.0;	// LOD 13
-	min = (int)(nw.lon.deg / lonbound - 0.5);
-	max = (int)(se.lon.deg / lonbound - 0.5) + 1;
+	min = (int)((double)nw.lon.deg / lonbound - 0.5);
+	max = (int)((double)se.lon.deg / lonbound - 0.5) + 1;
 	for (i = min; i <= max; i++) {
 		int x = trans->CalcX(i * lonbound);
 		PaintBox->Canvas->MoveTo(x, 0);
